@@ -26,3 +26,4 @@ InnoDB: buffer...
 190719 11:24:39 [Note] Event Scheduler: Loaded 0 events
 190719 11:24:39 [Note] /usr/sbin/mysqld: ready for connections.
 Version: '5.5.60-0+deb8u1'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  (Debian)
+190719 11:32:16 [Warning] IP address '192.168.95.1' could not be resolved: Name or service not known
