@@ -10,7 +10,6 @@ module.exports = {
   extends: [
     'prettier',
     'prettier/vue',
-    'plugin:prettier/recommended',
     '@nuxtjs',
     'plugin:nuxt/recommended'
   ],
@@ -19,6 +18,18 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off'
+    'nuxt/no-cjs-in-config': 'off',
+    'vue/html-indent': ['error', 4],
+    'indent': ['error', 4],
+    'comma-dangle': ['error', 'always'],
+    'semi' : ['error', 'always'],
+    'comma-spacing': [
+        'error',
+        {
+            before: false,
+            after: true,
+        },
+    ],
+    'array-bracket-spacing': ['error', 'never'],
   }
 }
