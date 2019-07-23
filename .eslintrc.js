@@ -46,5 +46,7 @@ module.exports = {
     ],
     'array-bracket-spacing': ['error', 'never'],
     'no-console': 'off',
+    'space-before-function-paren': ['error', 'always'],
+    'no-return-assign': 'off',
   }
 }

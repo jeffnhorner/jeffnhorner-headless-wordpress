@@ -1,14 +1,15 @@
 <template>
-    <div class="container">
+    <div
+        v-if="title"
+        class="container"
+    >
         <div>
             <logo />
             <h1 class="title">
-                jeffnhorner-dev
+                {{ title }}
             </h1>
             <h2 class="subtitle">
-                View layer of headless
-                wordpress web
-                application.
+                {{ subTitle }}
             </h2>
             <div class="links">
                 <a
@@ -31,13 +32,31 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
+    import Logo from '~/components/Logo.vue';
 
-export default {
-    components: {
-        Logo,
-    },
-};
+    export default {
+        components: {
+            Logo,
+        },
+
+        data: () => ({
+            title: '',
+            subTitle: '',
+        }),
+
+        created () {
+            this.$axios
+                .get('wp/v2/pages')
+                .then(({ data, }) => this.titles = data.find((data) => {
+                    this.title = data.acf.title;
+                    this.subTitle = data.acf.subtitle;
+                }));
+
+            console.log(this.titles);
+        },
+    };
+</script>
+    };
 </script>
 
 <style>
