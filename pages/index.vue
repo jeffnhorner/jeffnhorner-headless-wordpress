@@ -51,8 +51,6 @@
                     this.title = data.acf.title;
                     this.subTitle = data.acf.subtitle;
                 }));
-
-            console.log(this.titles);
         },
     };
 </script>
