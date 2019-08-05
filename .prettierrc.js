@@ -1,5 +1,6 @@
 module.exports = {
     printWidth: 40,
+    parser: Vue,
     tabWidth: 4,
     useTabs: false,
     semi: true,

@@ -1,21 +1,24 @@
 {
-    "eslint.validate": [
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-        {
-            "language": "javascript",
-            "autoFix": true
-        },
-    ],
-    "editor.formatOnSave": true,
-    "[javascript]": {
-        "editor.formatOnSave": false,
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": true
     },
-    "vetur.format.defaultFormatter.html": "none",
-    "eslint.autoFixOnSave": true,
-    "vetur.validation.template": false,
-    "editor.tabSize": 4,
-    "files.eol": "\n",
+    {
+      "language": "javascript",
+      "autoFix": true
+    }
+  ],
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "vetur.format.defaultFormatter.html": "none",
+  "eslint.autoFixOnSave": true,
+  "vetur.validation.template": false,
+  "editor.tabSize": 4,
+  "files.eol": "\n"
+  //   "css.validate": false,
+  //   "less.validate": false,
+  //   "scss.validate": false
 }

@@ -1,14 +1,15 @@
 <template>
-    <div class="container">
+    <div
+        v-if="title"
+        class="container"
+    >
         <div>
             <logo />
             <h1 class="title">
-                jeffnhorner-dev
+                {{ title }}
             </h1>
             <h2 class="subtitle">
-                View layer of headless
-                wordpress web
-                application.
+                {{ subTitle }}
             </h2>
             <div class="links">
                 <a
@@ -31,13 +32,29 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
+    import Logo from '~/components/Logo.vue';
 
-export default {
-    components: {
-        Logo,
-    },
-};
+    export default {
+        components: {
+            Logo,
+        },
+
+        data: () => ({
+            title: '',
+            subTitle: '',
+        }),
+
+        created () {
+            this.$axios
+                .get('wp/v2/pages')
+                .then(({ data, }) => this.titles = data.find((data) => {
+                    this.title = data.acf.title;
+                    this.subTitle = data.acf.subtitle;
+                }));
+        },
+    };
+</script>
+    };
 </script>
 
 <style>
@@ -56,11 +73,7 @@ export default {
 }
 
 .title {
-    font-family: 'Quicksand',
-        'Source Sans Pro', -apple-system,
-        BlinkMacSystemFont, 'Segoe UI',
-        Roboto, 'Helvetica Neue', Arial,
-        sans-serif;
+    font-family: 'Quicksand','Source Sans Pro', -apple-system,BlinkMacSystemFont, 'Segoe UI',Roboto, 'Helvetica Neue', Arial,sans-serif;
     display: block;
     font-weight: 300;
     font-size: 100px;

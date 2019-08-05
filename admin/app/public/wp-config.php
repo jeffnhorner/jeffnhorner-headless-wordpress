@@ -18,6 +18,12 @@
  * @package WordPress
  */
 
+//** Instantiate a new Dotenv class to pull config options from wordpress .env file **//
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::create(dirname(__DIR__) );
+$dotenv->load();
+
+
 // ** MySQL settings ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'local' );
