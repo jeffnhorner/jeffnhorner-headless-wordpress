@@ -1,3 +1,4 @@
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     mode: 'universal',
@@ -15,6 +16,25 @@ module.exports = {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', },
         ],
     },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            // enable CSS Modules
+                            modules: true,
+                            // customize generated class names
+                            localIdentName: '[local]_[hash:base64:8]',
+                        },
+                    },
+                ],
+            },
+        ],
+    },
   /*
   ** Customize the progress-bar color
   */
@@ -29,6 +49,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
     plugins: [
+        new VueLoaderPlugin(),
     ],
   /*
   ** Nuxt.js modules
