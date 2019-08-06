@@ -1,5 +1,3 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
 module.exports = {
     mode: 'universal',
   /*
@@ -48,9 +46,9 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-    plugins: [
-        new VueLoaderPlugin(),
-    ],
+    // plugins: [
+    //     new VueLoaderPlugin(),
+    // ],
   /*
   ** Nuxt.js modules
   */

@@ -18,7 +18,7 @@
  * @package WordPress
  */
 
-//** Instantiate a new Dotenv class to pull config options from wordpress .env file **//
+/** Instantiate a new Dotenv class to pull config options from wordpress .env file */
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(dirname(__DIR__) );
 $dotenv->load();

@@ -30,7 +30,7 @@
 
         methods: {
             async fetchNavigation () {
-                const { data: pages, } = await this.$axios.get('/wp/v2/pages');
+                const { data: pages } = await this.$axios.get('/wp/v2/pages');
 
                 await pages.forEach((page) => {
                     if (page.title.rendered) {

@@ -1,4 +1,5 @@
 module.exports = {
+    "extends": "stylelint-config-recommended",
     'rules': {
         'block-no-empty': null,
         'color-no-invalid-hex': true,
@@ -18,6 +19,17 @@ module.exports = {
             'ignore': ['after-comment']
         }],
         'unit-whitelist': ['em', 'rem', '%', 's', 'vh', 'vw', 'px', 'deg'],
-        ignoreAtRules: ['/^apply/', 'custom'],
+        "at-rule-no-unknown": [true, {
+            "ignoreAtRules": [
+                "extends",
+                "apply",
+                "tailwind",
+                "components",
+                "utilities",
+                "screen"
+            ]
+        }],
+        'declaration-block-trailing-semicolon': null,
+        'no-descending-specificity': null
     },
 };

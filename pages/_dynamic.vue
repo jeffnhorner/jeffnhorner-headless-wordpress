@@ -47,7 +47,7 @@
         created () {
             this.$axios
                 .get('wp/v2/pages')
-                .then(({ data, }) => this.titles = data.find((data) => {
+                .then(({ data }) => this.titles = data.find((data) => {
                     this.title = data.acf.title;
                     this.subTitle = data.acf.subtitle;
                 }));
@@ -57,7 +57,7 @@
     };
 </script>
 
-<style>
+<style lang="scss" module>
 /* Sample `apply` at-rules with Tailwind CSS
 .container {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
