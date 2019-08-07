@@ -1,28 +1,28 @@
 <template>
     <div
-        v-if="title"
-        class="container"
+        v-if="page.length"
+        v-bind:class="$style.container"
     >
         <div>
-            <logo />
-            <h1 class="title">
-                {{ title }}
+            <Logo />
+            <h1 v-bind:class="$style.title">
+                {{ page[0].title }}
             </h1>
-            <h2 class="subtitle">
-                {{ subTitle }}
+            <h2 v-bind:class="$style.subtitle">
+                {{ page[0].subTitle }}
             </h2>
-            <div class="links">
+            <div v-bind:class="$style.links">
                 <a
                     href="https://nuxtjs.org/"
                     target="_blank"
-                    class="button--green"
+                    v-bind:class="$style.buttonGreen"
                 >
                     Documentation
                 </a>
                 <a
                     href="https://github.com/nuxt/nuxt.js"
                     target="_blank"
-                    class="button--grey"
+                    v-bind:class="$style.buttonGrey"
                 >
                     GitHub
                 </a>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+    // import { mapState } from 'vuex';
     import Logo from '~/components/Logo.vue';
 
     export default {
@@ -40,18 +41,31 @@
         },
 
         data: () => ({
-            title: '',
-            subTitle: '',
+            page: [],
         }),
 
-        created () {
-            this.$axios
-                .get('wp/v2/pages')
-                .then(({ data }) => this.titles = data.find((data) => {
-                    this.title = data.acf.title;
-                    this.subTitle = data.acf.subtitle;
-                }));
+        computed: {
+            pages () {
+                return this.$store.getters['pages/pages'];
+            },
         },
+
+        async created () {
+            await this.$store.dispatch('pages/getPages');
+            await this.dynamicPageData();
+        },
+
+        methods: {
+            dynamicPageData () {
+                this.pages.filter(page => `/${page.title.rendered.toLowerCase()}` === this.$route.path
+                    ? this.page.push({
+                        title: page.acf.title,
+                        subTitle: page.acf.subtitle,
+                    })
+                    : null
+                );
+            }
+        }
     };
 </script>
     };
@@ -91,5 +105,34 @@
 
 .links {
     padding-top: 15px;
+}
+
+.buttonGreen {
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #3b8070;
+    color: #3b8070;
+    text-decoration: none;
+    padding: 10px 30px;
+}
+
+.buttonGreen:hover {
+    color: #fff;
+    background-color: #3b8070;
+}
+
+.buttonGrey {
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #35495e;
+    color: #35495e;
+    text-decoration: none;
+    padding: 10px 30px;
+    margin-left: 15px;
+}
+
+.buttonGrey:hover {
+    color: #fff;
+    background-color: #35495e;
 }
 </style>
