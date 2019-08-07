@@ -21,7 +21,7 @@ export const actions = {
         try {
             const { data: pageData } = await this.$axios.get('wp/v2/pages');
 
-            pageData.find(page => page.title.rendered === 'Home' ? page.title.rendered = '' : null);
+            pageData.find(page => page.slug === 'home' ? page.slug = '' : null);
 
             commit('updatePages', pageData);
         } catch (error) {

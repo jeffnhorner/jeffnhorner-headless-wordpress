@@ -57,7 +57,7 @@
 
         methods: {
             dynamicPageData () {
-                this.pages.filter(page => `/${page.title.rendered.toLowerCase()}` === this.$route.path
+                this.pages.filter(page => `/${page.slug}` === this.$route.path
                     ? this.page.push({
                         title: page.acf.title,
                         subTitle: page.acf.subtitle,
