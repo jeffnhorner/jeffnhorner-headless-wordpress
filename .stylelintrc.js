@@ -11,7 +11,7 @@ module.exports = {
         }],
         'declaration-colon-space-after': 'always',
         'indentation': [4, {
-        'except': ['value']
+            baseIndentLevel: 1,
         }],
         'max-empty-lines': 2,
         'rule-empty-line-before': [ 'always', {
