@@ -8,6 +8,11 @@
             <h1 v-bind:class="$style.title">
                 {{ page[0].title }}
             </h1>
+            <AppImage
+                v-if="page[0].imageUrl"
+                v-bind:image="page[0].imageUrl"
+                v-bind:max-width="'15rem'"
+            />
             <h2 v-bind:class="$style.subtitle">
                 {{ page[0].subTitle }}
             </h2>
@@ -32,12 +37,10 @@
 </template>
 
 <script>
-    // import { mapState } from 'vuex';
-    import Logo from '~/components/Logo.vue';
-
     export default {
         components: {
-            Logo,
+            Logo: () => import('~/components/Logo.vue'),
+            AppImage: () => import('~/components/Framework/AppImage.vue'),
         },
 
         data: () => ({
@@ -57,10 +60,11 @@
 
         methods: {
             dynamicPageData () {
-                this.pages.filter(page => `/${page.slug}` === this.$route.path
+                this.pages.filter(({ acf, slug }) => `/${slug}` === this.$route.path
                     ? this.page.push({
-                        title: page.acf.masthead_title,
-                        subTitle: page.acf.masthead_subtitle,
+                        title: acf.masthead_title,
+                        subTitle: acf.masthead_subtitle,
+                        imageUrl: acf.banner_image,
                     })
                     : null
                 );
