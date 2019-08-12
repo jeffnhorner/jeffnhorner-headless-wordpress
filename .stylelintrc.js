@@ -11,12 +11,12 @@ module.exports = {
         }],
         'declaration-colon-space-after': 'always',
         'indentation': [4, {
-            baseIndentLevel: 1,
+        baseIndentLevel: 1,
         }],
         'max-empty-lines': 2,
         'rule-empty-line-before': [ 'always', {
             'except': ['first-nested'],
-            'ignore': ['after-comment']
+            'ignore': ['after-comment'],
         }],
         'unit-whitelist': ['em', 'rem', '%', 's', 'vh', 'vw', 'px', 'deg'],
         "at-rule-no-unknown": [true, {
@@ -26,10 +26,10 @@ module.exports = {
                 "tailwind",
                 "components",
                 "utilities",
-                "screen"
+                "screen",
             ]
         }],
         'declaration-block-trailing-semicolon': null,
-        'no-descending-specificity': null
+        'no-descending-specificity': null,
     },
 };
