@@ -36,7 +36,7 @@ module.exports = {
     'vue/v-bind-style': 'longform',
     'indent': 'off',
     'indent-legacy': ['error', 4],
-    'comma-dangle': ['error', 'always'],
+    'comma-dangle': ['error', 'only-multiline'],
     'semi' : ['error', 'always'],
     'comma-spacing': [
         'error',

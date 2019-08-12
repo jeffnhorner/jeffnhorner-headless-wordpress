@@ -1,7 +1,7 @@
 <template>
     <nav
         v-if="navigation"
-        class="navContainer"
+        v-bind:class="$style.container"
     >
         <ul
             v-for="page in navigation"
@@ -9,7 +9,7 @@
         >
             <li>
                 <nuxt-link
-                    v-bind:to="page.link"
+                    v-bind:to="page.slug === 'home' ? '/' : page.slug"
                 >
                     {{ page.title }}
                 </nuxt-link>
@@ -30,14 +30,14 @@
 
         methods: {
             async fetchNavigation () {
-                const { data: pages, } = await this.$axios.get('/wp/v2/pages');
+                const { data: pages } = await this.$axios.get('/wp/v2/pages');
 
                 await pages.forEach((page) => {
                     if (page.title.rendered) {
                         this.navigation.push({
                             id: page.id,
                             title: page.title.rendered,
-                            link: page.link,
+                            slug: page.slug,
                         });
                     };
                 });
@@ -48,13 +48,13 @@
     };
 </script>
 
-<style scoped>
+<style lang="scss" module>
 
-    .navContainer {
+    .container {
         @apply flex mx-2;
-    }
 
-    .navContainer ul li {
-        @apply m-4;
+        ul li {
+            @apply m-4;
+        }
     }
 </style>

@@ -13,12 +13,21 @@
   "[javascript]": {
     "editor.formatOnSave": false
   },
+  "stylelint.enable": true,
+  "vetur.validation.style": false,
   "vetur.format.defaultFormatter.html": "none",
-  "eslint.autoFixOnSave": true,
   "vetur.validation.template": false,
+  "vetur.completion.useScaffoldSnippets": false,
+  "vetur.format.defaultFormatter.css": "none",
+  "vetur.format.defaultFormatter.scss": "none",
+  "vetur.format.defaultFormatter.less": "none",
+  "eslint.autoFixOnSave": true,
   "editor.tabSize": 4,
-  "files.eol": "\n"
-  //   "css.validate": false,
-  //   "less.validate": false,
-  //   "scss.validate": false
+  "files.eol": "\n",
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "css.lint.emptyRules": "ignore",
+  "scss.lint.emptyRules": "ignore",
+  "less.lint.emptyRules": "ignore"
 }
