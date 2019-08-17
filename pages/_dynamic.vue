@@ -63,7 +63,7 @@
          * @link https://vuejs.org/v2/api/#created
          */
         async created () {
-            await this.$store.dispatch('modules/pages/getPages');
+            await this.$store.dispatch('modules/pages/fetchCMSPages');
             await this.dynamicPageData();
         },
 
@@ -106,7 +106,6 @@
 
     .container {
         margin: 0 auto;
-        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -114,11 +113,10 @@
     }
 
     .title {
-        font-family: 'Quicksand','Source Sans Pro', -apple-system,BlinkMacSystemFont, 'Segoe UI',Roboto, 'Helvetica Neue', Arial,sans-serif;
         display: block;
-        font-weight: 700;
+        font-weight: 900;
         font-size: 100px;
-        color: #35495e;
+        color: #262626;
         letter-spacing: 1px;
     }
 

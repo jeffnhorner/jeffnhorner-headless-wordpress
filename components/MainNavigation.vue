@@ -6,44 +6,46 @@
         ]"
     >
         <div v-bind:class="$style.topMenu">
-            <nav
-                v-if="navigation"
-                v-bind:class="$style.navigation"
-            >
-                <ul v-bind:class="$style.navigationWrapper">
-                    <li
-                        v-for="page in navigation"
-                        v-bind:key="page.id"
-                        v-bind:class="$style.navigationItem"
-                    >
-                        <nuxt-link
-                            v-bind:class="$style.navigationLink"
-                            v-bind:to="page.slug === 'home' ? '/' : page.slug"
-                        >
-                            {{ page.title }}
-                        </nuxt-link>
-                    </li>
-                </ul>
-            </nav>
+            <NavigationBar
+                v-bind:navigation="navigation"
+            />
         </div>
         <div v-bind:class="$style.bottomMenu">
+            <nuxt-link
+                to="/"
+            >
+                <AppImage
+                    v-if="generalSettings"
+                    v-bind:class="$style.logo"
+                    v-bind:image="generalSettings.logo"
+                />
+            </nuxt-link>
             <button
                 v-bind:class="[
                     { [$style.menuIconSpacing] : hasExpandedMenu },
                     $style.menuIcon,
                 ]"
-                v-on:click="toggleMenu"
+                v-on:click="$store.dispatch(`modules/navigation/${hasExpandedMenu ? 'close' : 'open'}`)"
             >
                 <AppIcon
+                    v-bind:class="$style.menuStateIcon"
                     v-bind:name="hasExpandedMenu ? 'times' : 'bars'"
                 />
             </button>
         </div>
+        <div
+            v-bind:class="{ [$style.body] : hasExpandedMenu}"
+            v-on:click="$store.dispatch('modules/navigation/close')"
+        />
     </div>
 </template>
 
 <script>
     export default {
+        components: {
+            NavigationBar: () => import('./NavigationBar')
+        },
+
         /**
          * Initial Vue component reactive data.
          *
@@ -51,8 +53,17 @@
          */
         data: () => ({
             navigation: [],
-            hasExpandedMenu: false,
         }),
+
+        computed: {
+            generalSettings () {
+                return this.$store.getters['modules/pages/generalSettings'];
+            },
+
+            hasExpandedMenu () {
+                return this.$store.getters['modules/navigation/isOpen'];
+            }
+        },
 
         /**
          * Vue life-cycle hook called synchronously after the Vue instance is created.
@@ -60,6 +71,7 @@
          * @link https://vuejs.org/v2/api/#created
          */
         created () {
+            // Fetch and build the navigation
             this.fetchNavigation();
         },
 
@@ -70,32 +82,17 @@
          */
         methods: {
             async fetchNavigation () {
-                const { data: pages } = await this.$axios.get('/wp/v2/pages');
+                const [
+                    { default: NavigationItem },
+                    { data: navigation }
+                ] = await Promise.all([
+                    import('~/models/cms/NavigationItem'),
+                    this.$axios.get('/wp-api-menus/v2/menus/2'),
+                ]);
 
-                await pages.forEach((page) => {
-                    if (page.title.rendered) {
-                        this.navigation.push({
-                            id: page.id,
-                            title: page.title.rendered.toLowerCase(),
-                            slug: page.slug,
-                        });
-                    };
-                });
-
-                this.navigation.reverse();
+                this.navigation = navigation.items.map(item => new NavigationItem(item));
             },
-
-            toggleMenu () {
-                this.hasExpandedMenu = !this.hasExpandedMenu;
-            },
-
-            closeMenu () {
-                if (this.hasExpandedMenu) {
-                    console.log('test');
-                    this.hasExpandedMenu = false;
-                }
-            }
-        },
+        }
     };
 </script>
 
@@ -109,43 +106,39 @@
         &.visibleContainer {
             transform: translateY(0);
         }
-    }
 
-    .navigation {
-        @apply w-full h-full;
-    }
-
-    .navigationWrapper {
-        @apply flex items-center w-full h-full;
-    }
-
-    .navigationLink {
-        @apply flex justify-center items-center w-full h-full;
-    }
-
-    .navigationItem {
-        @apply flex self-center text-sm w-1/5 h-full;
-        border-bottom: .025rem solid #dddddd;
-        border-right: .025rem solid #dddddd;
-        border-top: .025rem solid #dddddd;
-        color: #262626;
-
-        &:hover {
-            background: #0071FF;
-            color: #fff;
-            transition: .2s ease-in-out;
+        @screen lg {
+            transform: translateY(-72.5%);
+        }
+        @screen xl {
+            transform: translateY(-75%);
         }
     }
 
     .topMenu {
-        @apply flex items-center justify-center text-center w-full;
+        @apply flex items-center justify-center text-center w-full z-10;
         background-color: #f7f7f7;
         height: 10rem;
+
+        @screen lg {
+            height: 11rem;
+        }
+        @screen xl {
+            height: 12rem;
+        }
     }
 
     .bottomMenu {
-        @apply relative w-full mt-12;
+        @apply flex justify-between relative w-full mt-12 z-10;
         max-width: 85%;
+    }
+
+    .logo {
+        width: 2.5rem;
+    }
+
+    .menuStateIcon {
+        @apply cursor-pointer;
     }
 
     .menuIcon {
@@ -154,5 +147,11 @@
         &:focus {
             @apply outline-none;
         }
+    }
+
+    .body {
+        @apply absolute;
+        height: 100vh;
+        width: 100vw;
     }
 </style>
