@@ -10,6 +10,11 @@
 
 <script>
     export default {
+        /**
+         * A collection of data that is exposed to accept data from a parent component.
+         *
+         * @link https://vuejs.org/v2/api/#props
+         */
         props: {
             image: {
                 type: String,

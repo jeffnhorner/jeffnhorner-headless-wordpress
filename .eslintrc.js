@@ -34,6 +34,7 @@ module.exports = {
         'ignores': [],
     }],
     'vue/v-bind-style': 'longform',
+    'vue/v-on-style': ['warning', 'longform'],
     'indent': 'off',
     'indent-legacy': ['error', 4],
     'comma-dangle': ['error', 'only-multiline'],

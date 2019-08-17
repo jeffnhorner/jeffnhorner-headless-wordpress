@@ -18,7 +18,7 @@ module.exports = {
             'except': ['first-nested'],
             'ignore': ['after-comment'],
         }],
-        'unit-whitelist': ['em', 'rem', '%', 's', 'vh', 'vw', 'px', 'deg'],
+        'unit-whitelist': ['em', 'rem', '%', 's', 'vh', 'vw', 'px', 'deg', 'ms'],
         "at-rule-no-unknown": [true, {
             "ignoreAtRules": [
                 "extends",

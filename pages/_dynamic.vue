@@ -4,7 +4,6 @@
         v-bind:class="$style.container"
     >
         <div>
-            <Logo />
             <h1 v-bind:class="$style.title">
                 {{ page.title }}
             </h1>
@@ -39,15 +38,6 @@
 <script>
     export default {
         /**
-         * Self contained reusable Vue single-file components.
-         *
-         * @link https://vuejs.org/v2/guide/single-file-components.html
-         */
-        components: {
-            Logo: () => import('~/components/Logo.vue'),
-        },
-
-        /**
          * Initial Vue component reactive data.
          *
          * @link https://vuejs.org/v2/api/#Options-Data
@@ -63,17 +53,17 @@
          */
         computed: {
             pages () {
-                return this.$store.getters['pages/pages'];
+                return this.$store.getters['modules/pages/pages'];
             },
         },
 
         /**
-         * Called synchronously after the Vue instance is created.
+         * Vue life-cycle hook called synchronously after the Vue instance is created.
          *
          * @link https://vuejs.org/v2/api/#created
          */
         async created () {
-            await this.$store.dispatch('pages/getPages');
+            await this.$store.dispatch('modules/pages/getPages');
             await this.dynamicPageData();
         },
 
@@ -102,11 +92,18 @@
 </script>
 
 <style lang="scss" module>
-    /* Sample `apply` at-rules with Tailwind CSS
-    .container {
-    @apply min-h-screen flex justify-center items-center text-center mx-auto;
+    html {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        word-spacing: 1px;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        color: #262626;
     }
-    */
+
     .container {
         margin: 0 auto;
         min-height: 100vh;
@@ -119,7 +116,7 @@
     .title {
         font-family: 'Quicksand','Source Sans Pro', -apple-system,BlinkMacSystemFont, 'Segoe UI',Roboto, 'Helvetica Neue', Arial,sans-serif;
         display: block;
-        font-weight: 300;
+        font-weight: 700;
         font-size: 100px;
         color: #35495e;
         letter-spacing: 1px;
