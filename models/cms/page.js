@@ -8,7 +8,6 @@ export default class Page {
      * @param {Object} data  The object to parse into the model.
      */
     constructor (data) {
-        console.log(data);
         this[_fields] = data;
     }
 
