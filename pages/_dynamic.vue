@@ -1,20 +1,20 @@
 <template>
     <div
-        v-if="page.length"
+        v-if="page"
         v-bind:class="$style.container"
     >
         <div>
             <Logo />
             <h1 v-bind:class="$style.title">
-                {{ page[0].title }}
+                {{ page.title }}
             </h1>
             <AppImage
-                v-if="page[0].imageUrl"
-                v-bind:image="page[0].imageUrl"
+                v-if="page.mastheadImage"
+                v-bind:image="page.mastheadImage"
                 v-bind:max-width="'15rem'"
             />
             <h2 v-bind:class="$style.subtitle">
-                {{ page[0].subTitle }}
+                {{ page.subTitle }}
             </h2>
             <div v-bind:class="$style.links">
                 <a
@@ -38,37 +38,63 @@
 
 <script>
     export default {
+        /**
+         * Self contained reusable Vue single-file components.
+         *
+         * @link https://vuejs.org/v2/guide/single-file-components.html
+         */
         components: {
             Logo: () => import('~/components/Logo.vue'),
-            AppImage: () => import('~/components/Framework/AppImage.vue'),
         },
 
+        /**
+         * Initial Vue component reactive data.
+         *
+         * @link https://vuejs.org/v2/api/#Options-Data
+         */
         data: () => ({
-            page: [],
+            page: {},
         }),
 
+        /**
+         * Vue computed properties are cached, and only re-computed on reactive dependency changes.
+         *
+         * @link https://vuejs.org/v2/api/#computed
+         */
         computed: {
             pages () {
                 return this.$store.getters['pages/pages'];
             },
         },
 
+        /**
+         * Called synchronously after the Vue instance is created.
+         *
+         * @link https://vuejs.org/v2/api/#created
+         */
         async created () {
             await this.$store.dispatch('pages/getPages');
             await this.dynamicPageData();
         },
 
+        /**
+         * Non-cached Vue methods.
+         *
+         * @link https://vuejs.org/v2/api/#computed
+         */
         methods: {
-            dynamicPageData () {
-                this.pages.filter(({ acf, slug }) => `/${slug}` === this.$route.path
-                    ? this.page.push({
-                        title: acf.masthead_title,
-                        subTitle: acf.masthead_subtitle,
-                        imageUrl: acf.banner_image,
-                    })
-                    : null
-                );
-            }
+            async dynamicPageData () {
+                const { default: Page } = await import('~/models/cms/Page');
+
+                // Filter the page data where the page data slug matches the current
+                // route path and instantiate a new Page model so we can use the page
+                // data in the template.
+                this.pages.filter((page) => {
+                    if (`/${page.slug}` === this.$route.path) {
+                        this.page = new Page(page);
+                    }
+                });
+            },
         }
     };
 </script>
