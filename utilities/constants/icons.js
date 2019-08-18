@@ -1,5 +1,5 @@
 export default {
-    navigationIcons: [
+    navigation: [
         {
             navItem: 'home',
             icon: 'home',
