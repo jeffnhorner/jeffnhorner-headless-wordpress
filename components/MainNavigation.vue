@@ -96,7 +96,7 @@
 
                 // Assign the appropriate font awesome icon name to each navigation item
                 this.navigation.forEach((item) => {
-                    icons.navigationIcons.forEach((constant) => {
+                    icons.navigation.forEach((constant) => {
                         if (item.link === constant.navItem) {
                             item.icon = constant.icon;
                         }
