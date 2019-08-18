@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <MainNavigation />
-    </div>
+    <MainNavigation
+        v-bind:class="$style.mainNavigation"
+    />
 </template>
 
 <script>
@@ -16,3 +16,9 @@
         },
     };
 </script>
+
+<style lang="scss" module>
+    .mainNavigation {
+        @apply fixed;
+    }
+</style>

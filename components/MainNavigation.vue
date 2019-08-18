@@ -41,6 +41,8 @@
 </template>
 
 <script>
+    import icons from '~/utilities/constants/icons';
+
     export default {
         components: {
             NavigationBar: () => import('./NavigationBar')
@@ -62,7 +64,7 @@
 
             hasExpandedMenu () {
                 return this.$store.getters['modules/navigation/isOpen'];
-            }
+            },
         },
 
         /**
@@ -91,6 +93,15 @@
                 ]);
 
                 this.navigation = navigation.items.map(item => new NavigationItem(item));
+
+                // Assign the appropriate font awesome icon name to each navigation item
+                this.navigation.forEach((item) => {
+                    icons.navigationIcons.forEach((constant) => {
+                        if (item.link === constant.navItem) {
+                            item.icon = constant.icon;
+                        }
+                    });
+                });
             },
         }
     };
@@ -103,10 +114,6 @@
         transition: transform 500ms;
         transform: translateY(-70%);
 
-        &.visibleContainer {
-            transform: translateY(0);
-        }
-
         @screen lg {
             transform: translateY(-72.5%);
         }
@@ -115,16 +122,20 @@
         }
     }
 
+    .visibleContainer {
+        transform: translateY(0);
+    }
+
     .topMenu {
         @apply flex items-center justify-center text-center w-full z-10;
-        background-color: #f7f7f7;
+        background-color: #f3f3f3;
         height: 10rem;
 
         @screen lg {
             height: 11rem;
         }
         @screen xl {
-            height: 12rem;
+            height: 14rem;
         }
     }
 

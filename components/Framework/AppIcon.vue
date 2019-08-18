@@ -13,10 +13,21 @@
     import {
         faBars,
         faTimes,
+        faHome,
+        faBook,
+        faEnvelope,
+        faWrench,
+        faPencilAlt,
+
     } from '@fortawesome/free-solid-svg-icons';
     library.add(
         faBars,
         faTimes,
+        faHome,
+        faBook,
+        faEnvelope,
+        faWrench,
+        faPencilAlt,
     );
 
     Vue.component('font-awesome-icon', FontAwesomeIcon);
