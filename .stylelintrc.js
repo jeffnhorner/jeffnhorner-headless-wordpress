@@ -29,7 +29,9 @@ module.exports = {
                 'screen',
             ],
         }],
-        'selector-pseudo-class-no-unknown': ['global'],
+        'selector-pseudo-class-no-unknown': [true, {
+            'ignorePseudoClasses': ['global'],
+        }],
         'declaration-block-trailing-semicolon': null,
         'no-descending-specificity': null,
     },

@@ -14,11 +14,15 @@
             <nuxt-link
                 to="/"
             >
-                <AppImage
-                    v-if="generalSettings"
-                    v-bind:class="$style.logo"
-                    v-bind:image="generalSettings.logo"
-                />
+                <span
+                    v-on:click="$store.dispatch('modules/navigation/close')"
+                >
+                    <AppImage
+                        v-if="generalSettings"
+                        v-bind:class="$style.logo"
+                        v-bind:image="generalSettings.logo"
+                    />
+                </span>
             </nuxt-link>
             <button
                 v-bind:class="[
@@ -44,6 +48,11 @@
     import icons from '~/utilities/constants/icons';
 
     export default {
+        /**
+         * Self contained reusable Vue single-file components.
+         *
+         * @link https://vuejs.org/v2/guide/single-file-components.html
+         */
         components: {
             NavigationBar: () => import('./NavigationBar')
         },
@@ -128,7 +137,7 @@
 
     .topMenu {
         @apply flex items-center justify-center text-center w-full z-10;
-        background-color: #f3f3f3;
+        background-color: #f7f7f7;
         height: 10rem;
 
         @screen lg {
