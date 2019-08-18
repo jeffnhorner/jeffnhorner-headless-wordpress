@@ -11,7 +11,7 @@
 <script>
     export default {
         /**
-         * A collection of data that is exposed to accept data from a parent component.
+         * A collection of data that is exposed for parent components to accept.
          *
          * @link https://vuejs.org/v2/api/#props
          */

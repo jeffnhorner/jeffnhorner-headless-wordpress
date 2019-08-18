@@ -38,16 +38,25 @@ export default class Page {
      *
      * @return  {String}
      */
-    get mastheadImage () {
+    get mainImage () {
         return this[_fields].acf.banner_image;
     }
 
     /**
-     * Getter for a CMS page's
+     * Getter for a CMS page's slug
      *
      * @return  {String}
      */
     get slug () {
         return this[_fields].slug;
+    }
+
+    /**
+     * Getter for a CMS page's masthead description
+     *
+     * @return  {String}
+     */
+    get description () {
+        return this[_fields].acf.masthead_description;
     }
 };

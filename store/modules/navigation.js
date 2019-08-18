@@ -18,6 +18,7 @@ export const actions = {
     },
 
     close ({ commit }) {
+        console.log('closing');
         commit('updateIsOpen', false);
     },
 };
