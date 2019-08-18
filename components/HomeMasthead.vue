@@ -31,8 +31,8 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex flex-col justify-center mx-auto w-full;
-        max-width: 85%;
+        @apply flex flex-col justify-center mx-auto px-12 w-full;
+        max-width: 100rem;
         height: 95vh;
     }
 

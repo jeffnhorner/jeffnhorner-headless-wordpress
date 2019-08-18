@@ -1,5 +1,8 @@
 <template>
     <div v-bind:class="$style.container">
+        <slot
+            name="posts"
+        />
         <div v-bind:class="$style.imageContainer">
             <AppImage
                 v-bind:class="$style.image"
@@ -27,13 +30,8 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex h-full justify-end mx-auto pr-12 mt-16 mb-8 w-full;
-        max-width: 85%;
-    }
-
-    .image {
-        @apply w-full mr-8 mb-12;
-        max-width: 33rem;
+        @apply flex h-full justify-between mx-auto mt-16 mb-8 px-12 w-full;
+        max-width: 100rem;
     }
 
     .imageContainer {
@@ -41,5 +39,10 @@
         height: 34rem;
         max-width: 41rem;
         background-color: #f3f3f3;
+    }
+
+    .image {
+        @apply w-full mr-8 mb-12;
+        max-width: 33rem;
     }
 </style>

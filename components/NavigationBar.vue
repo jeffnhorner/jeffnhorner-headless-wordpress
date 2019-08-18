@@ -57,7 +57,6 @@
         @apply flex self-center text-sm w-1/5 h-full;
         border-bottom: .025rem solid #dddddd;
         border-right: .025rem solid #dddddd;
-        border-top: .025rem solid #dddddd;
         color: #262626;
 
         &:hover {
