@@ -34,6 +34,8 @@ module.exports = {
         'ignores': [],
     }],
     'vue/v-bind-style': 'longform',
+    'vue/v-on-style': ['warning', 'longform'],
+    'nuxt/no-globals-in-created': 'off',
     'indent': 'off',
     'indent-legacy': ['error', 4],
     'comma-dangle': ['error', 'only-multiline'],

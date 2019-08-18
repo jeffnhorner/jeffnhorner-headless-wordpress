@@ -1,60 +1,168 @@
 <template>
-    <nav
-        v-if="navigation"
-        v-bind:class="$style.container"
+    <div
+        v-bind:class="[
+            { [$style.visibleContainer] : hasExpandedMenu },
+            $style.container,
+        ]"
     >
-        <ul
-            v-for="page in navigation"
-            v-bind:key="page.id"
-        >
-            <li>
-                <nuxt-link
-                    v-bind:to="page.slug === 'home' ? '/' : page.slug"
-                >
-                    {{ page.title }}
-                </nuxt-link>
-            </li>
-        </ul>
-    </nav>
+        <div v-bind:class="$style.topMenu">
+            <NavigationBar
+                v-bind:navigation="navigation"
+            />
+        </div>
+        <div v-bind:class="$style.bottomMenu">
+            <nuxt-link
+                to="/"
+            >
+                <AppImage
+                    v-if="generalSettings"
+                    v-bind:class="$style.logo"
+                    v-bind:image="generalSettings.logo"
+                />
+            </nuxt-link>
+            <button
+                v-bind:class="[
+                    { [$style.menuIconSpacing] : hasExpandedMenu },
+                    $style.menuIcon,
+                ]"
+                v-on:click="$store.dispatch(`modules/navigation/${hasExpandedMenu ? 'close' : 'open'}`)"
+            >
+                <AppIcon
+                    v-bind:class="$style.menuStateIcon"
+                    v-bind:name="hasExpandedMenu ? 'times' : 'bars'"
+                />
+            </button>
+        </div>
+        <div
+            v-bind:class="{ [$style.body] : hasExpandedMenu}"
+            v-on:click="$store.dispatch('modules/navigation/close')"
+        />
+    </div>
 </template>
 
 <script>
+    import icons from '~/utilities/constants/icons';
+
     export default {
+        components: {
+            NavigationBar: () => import('./NavigationBar')
+        },
+
+        /**
+         * Initial Vue component reactive data.
+         *
+         * @link https://vuejs.org/v2/api/#Options-Data
+         */
         data: () => ({
             navigation: [],
         }),
 
+        computed: {
+            generalSettings () {
+                return this.$store.getters['modules/pages/generalSettings'];
+            },
+
+            hasExpandedMenu () {
+                return this.$store.getters['modules/navigation/isOpen'];
+            },
+        },
+
+        /**
+         * Vue life-cycle hook called synchronously after the Vue instance is created.
+         *
+         * @link https://vuejs.org/v2/api/#created
+         */
         created () {
+            // Fetch and build the navigation
             this.fetchNavigation();
         },
 
+        /**
+         * Non-cached Vue methods.
+         *
+         * @link https://vuejs.org/v2/api/#computed
+         */
         methods: {
             async fetchNavigation () {
-                const { data: pages } = await this.$axios.get('/wp/v2/pages');
+                const [
+                    { default: NavigationItem },
+                    { data: navigation }
+                ] = await Promise.all([
+                    import('~/models/cms/NavigationItem'),
+                    this.$axios.get('/wp-api-menus/v2/menus/2'),
+                ]);
 
-                await pages.forEach((page) => {
-                    if (page.title.rendered) {
-                        this.navigation.push({
-                            id: page.id,
-                            title: page.title.rendered,
-                            slug: page.slug,
-                        });
-                    };
+                this.navigation = navigation.items.map(item => new NavigationItem(item));
+
+                // Assign the appropriate font awesome icon name to each navigation item
+                this.navigation.forEach((item) => {
+                    icons.navigationIcons.forEach((constant) => {
+                        if (item.link === constant.navItem) {
+                            item.icon = constant.icon;
+                        }
+                    });
                 });
-
-                this.navigation.reverse();
             },
-        },
+        }
     };
 </script>
 
 <style lang="scss" module>
 
     .container {
-        @apply flex mx-2;
+        @apply items-center flex flex-col w-full;
+        transition: transform 500ms;
+        transform: translateY(-70%);
 
-        ul li {
-            @apply m-4;
+        @screen lg {
+            transform: translateY(-72.5%);
         }
+        @screen xl {
+            transform: translateY(-75%);
+        }
+    }
+
+    .visibleContainer {
+        transform: translateY(0);
+    }
+
+    .topMenu {
+        @apply flex items-center justify-center text-center w-full z-10;
+        background-color: #f3f3f3;
+        height: 10rem;
+
+        @screen lg {
+            height: 11rem;
+        }
+        @screen xl {
+            height: 14rem;
+        }
+    }
+
+    .bottomMenu {
+        @apply flex justify-between relative w-full mt-12 z-10;
+        max-width: 85%;
+    }
+
+    .logo {
+        width: 2.5rem;
+    }
+
+    .menuStateIcon {
+        @apply cursor-pointer;
+    }
+
+    .menuIcon {
+        @apply float-right relative;
+
+        &:focus {
+            @apply outline-none;
+        }
+    }
+
+    .body {
+        @apply absolute;
+        height: 100vh;
+        width: 100vw;
     }
 </style>

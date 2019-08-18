@@ -18,17 +18,18 @@ module.exports = {
             'except': ['first-nested'],
             'ignore': ['after-comment'],
         }],
-        'unit-whitelist': ['em', 'rem', '%', 's', 'vh', 'vw', 'px', 'deg'],
-        "at-rule-no-unknown": [true, {
-            "ignoreAtRules": [
-                "extends",
-                "apply",
-                "tailwind",
-                "components",
-                "utilities",
-                "screen",
-            ]
+        'unit-whitelist': ['em', 'rem', '%', 's', 'vh', 'vw', 'px', 'deg', 'ms'],
+        'at-rule-no-unknown': [true, {
+            'ignoreAtRules': [
+                'extends',
+                'apply',
+                'tailwind',
+                'components',
+                'utilities',
+                'screen',
+            ],
         }],
+        'selector-pseudo-class-no-unknown': ['global'],
         'declaration-block-trailing-semicolon': null,
         'no-descending-specificity': null,
     },

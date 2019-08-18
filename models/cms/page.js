@@ -1,6 +1,10 @@
 // Use symbols for private attributes
 const _fields = Symbol('fields');
 
+/**
+ * Javascript class for building a Page data model from the received payload fetched
+ * from the CMS pages.
+ */
 export default class Page {
     /**
      * The page constructor
@@ -8,7 +12,6 @@ export default class Page {
      * @param {Object} data  The object to parse into the model.
      */
     constructor (data) {
-        console.log(data);
         this[_fields] = data;
     }
 
@@ -22,20 +25,29 @@ export default class Page {
     }
 
         /**
-     * Getter for a CMS page's subTitle advance custom field
+     * Getter for a CMS page's subtitle advance custom field
      *
      * @return  {String}
      */
-    get subTitle () {
+    get subtitle () {
         return this[_fields].acf.masthead_subtitle;
     }
 
-        /**
+    /**
      * Getter for a CMS page's mastheadImage advance custom field
      *
      * @return  {String}
      */
     get mastheadImage () {
         return this[_fields].acf.banner_image;
+    }
+
+    /**
+     * Getter for a CMS page's
+     *
+     * @return  {String}
+     */
+    get slug () {
+        return this[_fields].slug;
     }
 };
