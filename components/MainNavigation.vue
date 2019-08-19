@@ -149,8 +149,8 @@
     }
 
     .bottomMenu {
-        @apply flex justify-between relative w-full mt-12 z-10;
-        max-width: 85%;
+        @apply flex justify-between relative w-full mt-12 z-10 px-12;
+        max-width: 100rem;
     }
 
     .logo {

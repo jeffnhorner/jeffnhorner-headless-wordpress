@@ -9,7 +9,11 @@
         <HomeBody
             v-if="isHomepage"
             v-bind:page="page"
-        />
+        >
+            <template v-slot:posts>
+                <BlogPreview />
+            </template>
+        </HomeBody>
     </div>
 </template>
 
@@ -23,6 +27,7 @@
         components: {
             HomeMasthead: () => import('~/components/HomeMasthead'),
             HomeBody: () => import('~/components/HomeBody'),
+            BlogPreview: () => import('~/components/BlogPreview'),
         },
 
         /**
@@ -87,8 +92,6 @@
 <style lang="scss" module>
     html {
         font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
-        word-spacing: 1px;
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
         -moz-osx-font-smoothing: grayscale;
