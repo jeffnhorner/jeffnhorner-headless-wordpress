@@ -2,7 +2,7 @@
 
 > View layer of headless wordpress web application.
 
-# This project is for creating a wordpress site from my current portfolio site. A few details:
+# Overview: A portfolio site using Nuxt.js and wordpress as a headless cms:
 
 - Wordpress will be used a headless CMS
 - Nuxt.js (a vue.js framework) will be used as the presentation layer
