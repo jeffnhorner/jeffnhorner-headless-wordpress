@@ -2,7 +2,7 @@
 
 > View layer of headless wordpress web application.
 
-# Overview: A portfolio site using Nuxt.js and wordpress as a headless cms:
+# A portfolio site using Nuxt.js and wordpress as a headless cms:
 
 - Wordpress will be used a headless CMS
 - Nuxt.js (a vue.js framework) will be used as the presentation layer
