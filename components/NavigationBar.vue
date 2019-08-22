@@ -10,9 +10,10 @@
                 v-bind:class="$style.navigationItem"
                 v-on:click="$store.dispatch('modules/navigation/close')"
             >
-                <nuxt-link
+                <NuxtLink
+                    exact
                     v-bind:class="$style.navigationLink"
-                    v-bind:to="item.link === 'home' ? '/' : item.link"
+                    v-bind:to="item.link === 'home' ? '/' : `/${item.link}`"
                 >
                     <span>
                         {{ item.title }}
@@ -22,7 +23,7 @@
                             v-bind:name="item.icon"
                         />
                     </span>
-                </nuxt-link>
+                </NuxtLink>
             </li>
         </ul>
     </nav>

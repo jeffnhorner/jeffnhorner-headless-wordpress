@@ -13,6 +13,12 @@
   "[javascript]": {
     "editor.formatOnSave": false
   },
+  "[css]": {
+    "editor.formatOnSave": false
+  },
+  "[scss]": {
+    "editor.formatOnSave": false
+  },
   "stylelint.enable": true,
   "vetur.validation.style": false,
   "vetur.format.defaultFormatter.html": "none",

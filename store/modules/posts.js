@@ -1,3 +1,5 @@
+import normalizeTime from '~/utilities/helpers/normalizeTime';
+
 export const state = () => ({
     posts: [],
 });
@@ -20,6 +22,11 @@ export const actions = {
         try {
             // Make request to CMS /pages endpoint to get page data
             const { data: postsData } = await this.$axios.get('wp/v2/posts');
+
+            // Create a normalized timestamp to utilize for blog posts
+            postsData.forEach((post) => {
+                post.timestamp = normalizeTime(post.date);
+            });
 
             commit('updatePosts', postsData);
         } catch (error) {

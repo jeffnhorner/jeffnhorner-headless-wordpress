@@ -1,5 +1,8 @@
 <template>
-    <div v-bind:class="$style.container">
+    <div
+        v-if="page"
+        v-bind:class="$style.container"
+    >
         <slot
             name="posts"
         />

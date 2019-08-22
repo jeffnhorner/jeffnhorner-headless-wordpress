@@ -2,6 +2,7 @@
     <div
         v-if="page"
     >
+        <!-- temporary static component declaraction -->
         <HomeMasthead
             v-if="isHomepage"
             v-bind:page="page"
@@ -19,6 +20,8 @@
 
 <script>
     export default {
+        transition: 'page',
+
         /**
          * Self contained reusable Vue single-file components.
          *
@@ -61,7 +64,7 @@
          */
         async created () {
             // Dispatch the vuex action to fetch all CMS page data
-            await this.$store.dispatch('modules/pages/fetchCMSPages');
+            // await this.$store.dispatch('modules/pages/fetchCMSPages');
             await this.dynamicPageData();
         },
 

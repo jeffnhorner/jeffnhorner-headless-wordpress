@@ -13,23 +13,32 @@
                 v-bind:key="post.id"
                 v-bind:class="$style.post"
             >
-                <span v-bind:class="$style.postHeadline">
+                <NuxtLink
+                    v-bind:to="`/blogs/${post.slug}`"
+                    v-bind:class="$style.link"
+                >
                     <span v-bind:class="$style.count">
                         {{ index + 1 }}
                     </span>
-                    <h3>
-                        {{ post.title.rendered }}
-                    </h3>
-                </span>
-                <!-- eslint-disable vue/no-v-html -->
-                <p
-                    v-bind:class="$style.description"
-                    v-html="truncateDescription(post.content.rendered)"
-                />
-                <!-- eslint-enable vue/no-v-html -->
+                    <div v-bind:class="$style.content">
+                        <span v-bind:class="$style.titleWrapper">
+                            <h3 v-bind:class="$style.title">
+                                {{ post.title.rendered }}
+                            </h3>
+                            <span v-bind:class="$style.timestamp">
+                                {{ post.timestamp }}
+                            </span>
+                        </span>
+                        <!-- eslint-disable vue/no-v-html -->
+                        <p
+                            v-bind:class="$style.description"
+                            v-html="truncateDescription(post.content.rendered)"
+                        />
+                    <!-- eslint-enable vue/no-v-html -->
+                    </div>
+                </NuxtLink>
             </li>
         </ul>
-        </sectionv-if="posts">
     </section>
 </template>
 
@@ -37,62 +46,93 @@
     import truncateStringByWordCount from '~/utilities/helpers/truncateStringByWordCount';
 
     export default {
+        /**
+         * Vue computed properties are cached, and only re-computed on reactive dependency changes.
+         *
+         * @link https://vuejs.org/v2/api/#computed
+         */
         computed: {
             posts () {
                 return this.$store.getters['modules/posts/posts'];
             },
         },
 
-        async created () {
-            await this.$store.dispatch('modules/posts/fetchCMSPosts');
-
-            console.log(this.posts);
-        },
-
+        /**
+         * Non-cached Vue methods.
+         *
+         * @link https://vuejs.org/v2/api/#computed
+         */
         methods: {
             truncateDescription (string) {
-                return truncateStringByWordCount(string, 20);
-            }
-        }
+                return truncateStringByWordCount(string, 30);
+            },
+        },
     };
 </script>
 
 <style lang="scss" module>
     .container {
-        @apply mt-32;
+        @apply mt-40;
     }
 
     .headline {
-        @apply font-extrabold ml-10 tracking-wider text-xl;
+        @apply font-extrabold ml-16 tracking-wider text-2xl;
     }
 
     .divider {
-        @apply ml-10 mt-2;
+        @apply flex ml-16 mt-2 mb-4;
         background-color: #e7e7e7;
         height: .05rem;
-        width: 5rem;
+        width: 6rem;
     }
 
     .postContainer {
-        @apply flex flex-col justify-center mt-12;
+        @apply flex flex-col justify-center;
     }
 
     .post {
-        @apply mb-8;
+        @apply px-6 pb-6 pt-4 cursor-pointer z-10;
+
+        &:hover {
+            box-shadow: .05rem .05rem .25rem #e7e7e7;
+            transition: .2s ease-in-out;
+        }
     }
 
     .count {
-        @apply text-3xl font-extrabold mr-4;
+        @apply font-extrabold self-start text-5xl text-right mr-6 -mt-1;
         width: 1.5rem;
     }
 
-    .postHeadline {
-        @apply flex items-center text-2xl font-thin;
+    .content {
+        @apply flex flex-col;
+    }
+
+    .link {
+        @apply flex items-center text-3xl font-thin;
+    }
+
+    .titleWrapper {
+        @apply flex flex-col justify-end;
+    }
+
+    .title {
+        @apply my-0;
+    }
+
+    .timestamp {
+        @apply font-thin;
+        color: #595959;
+        font-size: .5rem;
     }
 
     .description {
-        @apply text-xs font-light leading-loose w-full pl-10;
+        @apply text-xs font-light leading-loose mt-4 w-full;
         color: #595959;
-        max-width: 30rem;
+        max-width: 32rem;
+    }
+
+    .navigationLink {
+        @apply flex flex-col justify-center items-center w-full h-full;
     }
 </style>

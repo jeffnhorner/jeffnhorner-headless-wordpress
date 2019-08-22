@@ -42,12 +42,14 @@ module.exports = {
   */
     css: [
         '~/assets/css/tailwind.css',
+        '~/assets/scss/transitions.scss',
     ],
   /*
   ** Plugins to load before mounting the App
   */
     plugins: [
-        '~/plugins/framework-components.js',
+        '~/plugins/frameworkComponents.js',
+        '~/plugins/dispatchGlobalData.server.js',
     ],
   /*
   ** Nuxt.js modules
