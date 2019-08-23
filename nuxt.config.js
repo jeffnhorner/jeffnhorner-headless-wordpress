@@ -1,5 +1,8 @@
+const env = require('dotenv').config();
+
 module.exports = {
     mode: 'universal',
+    env: env.parsed,
   /*
   ** Headers of the page
   */
@@ -59,7 +62,7 @@ module.exports = {
         '@nuxtjs/axios',
     ],
     axios: {
-        baseURL: 'http://jeffnhornerdev.local/wp-json/',
+        baseURL: process.env.NUXT_DEV_API_URL,
     },
   /*
   ** Build configuration

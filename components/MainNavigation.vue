@@ -97,6 +97,8 @@
          */
         methods: {
             async fetchNavigation () {
+                // Dynamically import the batch of dependencies we need for
+                // fetching and displaying the navigation menu.
                 const [
                     { default: icons },
                     { default: NavigationItem },
@@ -225,7 +227,8 @@
             }
         }
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             .line1 {
                 transform: translateY($height-line / 2 * -1);
                 -webkit-transform: translateY($height-line / 2 * -1);
