@@ -51,13 +51,13 @@
 
     .subtitle {
         @apply font-thin text-xl tracking-wide;
-        color: #595959;
+        color: #3c3c3c;
         padding-bottom: 15px;
     }
 
     .description {
         @apply font-thin leading-loose mt-4 tracking-wide w-full;
-        color: #595959;
+        color: #3c3c3c;
         max-width: 30rem;
     }
 </style>

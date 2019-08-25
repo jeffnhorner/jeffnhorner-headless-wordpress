@@ -127,7 +127,7 @@
 <style lang="scss" module>
 
     .container {
-        @apply items-center fixed flex flex-col w-full;
+        @apply items-center fixed flex flex-col w-full z-20;
         transition: transform 500ms;
         transform: translateY(-70%);
 
@@ -227,8 +227,7 @@
             }
         }
 
-        &:hover,
-        &:focus {
+        &:hover {
             .line1 {
                 transform: translateY($height-line / 2 * -1);
                 -webkit-transform: translateY($height-line / 2 * -1);
