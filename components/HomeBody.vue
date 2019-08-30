@@ -40,12 +40,12 @@
     .imageContainer {
         @apply flex items-end justify-end w-full;
         height: 34rem;
-        max-width: 41rem;
-        background-color: #f3f3f3;
+        max-width: 46%;
+        background-color: #f7f7f7;
     }
 
     .image {
         @apply w-full mr-8 mb-12;
-        max-width: 33rem;
+        max-width: 80%;
     }
 </style>

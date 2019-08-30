@@ -121,14 +121,14 @@
     }
 
     .timestamp {
-        @apply font-thin;
-        color: #595959;
+        @apply font-thin uppercase;
+        color: #3c3c3c;
         font-size: .5rem;
     }
 
     .description {
         @apply text-xs font-light leading-loose mt-4 w-full;
-        color: #595959;
+        color: #3c3c3c;
         max-width: 32rem;
     }
 

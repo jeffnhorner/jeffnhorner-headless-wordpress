@@ -15,6 +15,9 @@
                 <BlogPreview />
             </template>
         </HomeBody>
+        <HomeProjects
+            v-if="isHomepage"
+        />
     </div>
 </template>
 
@@ -31,6 +34,7 @@
             HomeMasthead: () => import('~/components/HomeMasthead'),
             HomeBody: () => import('~/components/HomeBody'),
             BlogPreview: () => import('~/components/BlogPreview'),
+            HomeProjects: () => import('~/components/HomeProjects'),
         },
 
         /**
