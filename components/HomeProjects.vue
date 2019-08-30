@@ -50,9 +50,6 @@
 
                 // Define the projects we want to feature
                 this.features = githubProjects.filter(project => project.name === 'website-template-for-creatives' || project.name === 'jeffnhorner-headless-wordpress');
-
-                console.log(this.highlight);
-                console.log(this.features);
             }
         }
     };
