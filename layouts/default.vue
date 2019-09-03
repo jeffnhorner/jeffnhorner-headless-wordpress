@@ -2,6 +2,7 @@
     <div>
         <MainHeader />
         <nuxt />
+        <MainFooter />
     </div>
 </template>
 
@@ -14,6 +15,7 @@
          */
         components: {
             MainHeader: () => import('~/components/MainHeader.vue'),
+            MainFooter: () => import('~/components/MainFooter.vue'),
         },
     };
 </script>

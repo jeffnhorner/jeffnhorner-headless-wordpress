@@ -18,29 +18,53 @@
                     />
                 </div>
             </div>
+            <AppLink
+                v-bind:class="$style.callToAction"
+                to="/portfolio"
+                v-bind:link-text="'See All My Work'"
+            />
         </div>
         <span v-bind:class="$style.abstractContainer" />
-        </appimage>
     </section>
 </template>
 
 <script>
     export default {
+        /**
+         * Self contained reusable Vue single-file components.
+         *
+         * @link https://vuejs.org/v2/guide/single-file-components.html
+         */
         components: {
             HomeProjectHighlight: () => import('~/components/HomeProjectHighlight'),
             HomeProjectFeature: () => import('~/components/HomeProjectFeature'),
         },
 
+        /**
+         * Initial Vue component reactive data.
+         *
+         * @link https://vuejs.org/v2/api/#Options-Data
+         */
         data: () => ({
             highlight: {},
             features: [],
             hasHover: false,
         }),
 
+        /**
+         * Vue life-cycle hook called synchronously after the Vue instance is created.
+         *
+         * @link https://vuejs.org/v2/api/#created
+         */
         async created () {
             await this.fetchGithubProjects();
         },
 
+        /**
+         * Non-cached Vue methods.
+         *
+         * @link https://vuejs.org/v2/api/#computed
+         */
         methods: {
             async fetchGithubProjects () {
                 const { data: githubProjects } = await this.$axios.get('https://api.github.com/users/jeffnhorner/starred');
@@ -57,8 +81,9 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex justify-center mx-auto px-12 mt-56 relative w-full;
+        @apply flex justify-center mx-auto px-12 relative w-full;
         max-width: 100rem;
+        top: 10rem;
     }
 
     .content {
@@ -84,6 +109,16 @@
 
         > *:first-of-type {
             @apply mb-8;
+        }
+    }
+
+    .callToAction {
+        @apply flex;
+        height: 13rem;
+
+        > a {
+            @apply lowercase self-end text-white text-lg py-8 px-16;
+            background-color: #0071FF;
         }
     }
 

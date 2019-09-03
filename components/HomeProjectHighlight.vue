@@ -34,6 +34,11 @@
 
 <script>
     export default {
+        /**
+         * A collection of data that is exposed for parent components to accept.
+         *
+         * @link https://vuejs.org/v2/api/#props
+         */
         props: {
             project: {
                 type: Object,
@@ -41,13 +46,14 @@
             },
         },
 
+        /**
+         * Initial Vue component reactive data.
+         *
+         * @link https://vuejs.org/v2/api/#Options-Data
+         */
         data: () => ({
             hasHover: false,
         }),
-
-        created () {
-            console.log(this.project);
-        }
     };
 </script>
 
@@ -66,7 +72,7 @@
     }
 
     .highlightTitle {
-        @apply font-thin text-xl;
+        @apply font-thin;
         color: #3c3c3c;
     }
 

@@ -15,9 +15,7 @@
                 <BlogPreview />
             </template>
         </HomeBody>
-        <HomeProjects
-            v-if="isHomepage"
-        />
+        <HomeProjects />
     </div>
 </template>
 
