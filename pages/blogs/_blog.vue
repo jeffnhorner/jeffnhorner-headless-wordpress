@@ -1,13 +1,27 @@
 <template>
-    <div v-if="post">
-        <h1 v-bind:class="$style.title">
-            {{ post.title.rendered }}
-        </h1>
+    <div
+        v-if="post"
+        v-bind:class="$style.container"
+    >
+        <section v-bind:class="$style.heroContainer">
+            <BlogPost
+                v-bind:post="post"
+            />
+        </section>
     </div>
 </template>
 
 <script>
     export default {
+        /**
+         * Self contained reusable Vue single-file components.
+         *
+         * @link https://vuejs.org/v2/guide/single-file-components.html
+         */
+        components: {
+            BlogPost: () => import('~/components/BlogPost.vue')
+        },
+
         /**
          * Initial Vue component reactive data.
          *
@@ -50,7 +64,13 @@
 </script>
 
 <style lang="scss" module>
-    .title {
-        height: 10rem;
+    .container {
+        @apply px-12 w-full;
+        max-width: 100rem;
+    }
+
+    .heroContainer {
+        @apply flex items-center;
+        height: 100vh;
     }
 </style>
