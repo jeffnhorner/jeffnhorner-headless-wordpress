@@ -1,39 +1,19 @@
 <template>
-    <div
-        v-if="page"
-    >
-        <!-- temporary static component declaraction -->
-        <HomeMasthead
-            v-if="isHomepage"
-            v-bind:page="page"
-        />
-        <HomeBody
-            v-if="isHomepage"
-            v-bind:page="page"
-        >
-            <template v-slot:posts>
-                <BlogPreview />
-            </template>
-        </HomeBody>
-        <HomeProjects />
-    </div>
+    <component
+        v-bind:is="component"
+        v-if="component"
+    />
 </template>
 
 <script>
+    // Dynamic imports based upon Vue's async component factory
+    // See https://vuejs.org/v2/guide/components.html#Advanced-Async-Components
+    const dynamicImports = componentName => ({
+        component: import(`~/components/${componentName}`),
+    });
+
     export default {
         transition: 'page',
-
-        /**
-         * Self contained reusable Vue single-file components.
-         *
-         * @link https://vuejs.org/v2/guide/single-file-components.html
-         */
-        components: {
-            HomeMasthead: () => import('~/components/HomeMasthead'),
-            HomeBody: () => import('~/components/HomeBody'),
-            BlogPreview: () => import('~/components/BlogPreview'),
-            HomeProjects: () => import('~/components/HomeProjects'),
-        },
 
         /**
          * Initial Vue component reactive data.
@@ -41,56 +21,24 @@
          * @link https://vuejs.org/v2/api/#Options-Data
          */
         data: () => ({
-            page: {},
+            component: null,
         }),
-
-        /**
-         * Vue computed properties are cached, and only re-computed on reactive dependency changes.
-         *
-         * @link https://vuejs.org/v2/api/#computed
-         */
-        computed: {
-            pages () {
-                return this.$store.getters['modules/pages/pages'];
-            },
-
-            isHomepage () {
-                return this.page.slug === '';
-            }
-        },
 
         /**
          * Vue life-cycle hook called synchronously after the Vue instance is created.
          *
          * @link https://vuejs.org/v2/api/#created
          */
-        async created () {
-            // Dispatch the vuex action to fetch all CMS page data
-            // await this.$store.dispatch('modules/pages/fetchCMSPages');
-            await this.dynamicPageData();
+        async beforeCreate () {
+            const { default: componentMapping } = await import('~/utilities/constants/componentMapping');
+
+            componentMapping.forEach(({ path, name }) => {
+                if (path === this.$route.path) {
+                    // Assign the dynamic component
+                    this.component = () => dynamicImports(name);
+                }
+            });
         },
-
-        /**
-         * Non-cached Vue methods.
-         *
-         * @link https://vuejs.org/v2/api/#computed
-         */
-        methods: {
-            async dynamicPageData () {
-                const { default: Page } = await import('~/models/cms/Page');
-
-                // Filter the page data where the page data slug matches the current
-                // route path and instantiate a new Page model so we can use the page
-                // data in the template.
-                this.pages.filter((page) => {
-                    if (`/${page.slug}` === this.$route.path) {
-                        this.page = new Page(page);
-                    }
-                });
-            },
-        }
-    };
-</script>
     };
 </script>
 

@@ -1,10 +1,11 @@
 export default function normalizeTime (date) {
-    date = new Date(date);
     const options = {
         hour: 'numeric',
         minute: 'numeric',
-        hour12: true
+        hour12: true,
     };
+
+    date = new Date(date);
 
     const time = date.toLocaleString('en-US', options);
 

@@ -3,6 +3,7 @@
         <h1 v-bind:class="$style.title">
             {{ post.title.rendered }}
         </h1>
+        <p>{{ post.timestamp }}</p>
         <!-- eslint-disable vue/no-v-html -->
         <div
             v-bind:class="$style.body"
@@ -25,12 +26,12 @@
 
 <style lang="scss" module>
     .title {
-        @apply font-medium mb-8 text-2xl;
+        @apply font-bold mb-8 text-5xl;
     }
 
     .body {
         > * {
-            @apply font-thin leading-loose text-sm;
+            @apply font-light leading-loose text-sm;
         }
 
         > p {

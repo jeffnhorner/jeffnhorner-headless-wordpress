@@ -3,6 +3,7 @@
         v-if="post"
         v-bind:class="$style.container"
     >
+        <span v-bind:class="$style.spacing" />
         <section v-bind:class="$style.heroContainer">
             <BlogPost
                 v-bind:post="post"
@@ -69,8 +70,12 @@
         max-width: 100rem;
     }
 
+    .spacing {
+        @apply block;
+        height: 20vh;
+    }
+
     .heroContainer {
         @apply flex items-center;
-        height: 100vh;
     }
 </style>
