@@ -93,7 +93,7 @@
         /**
          * Non-cached Vue methods.
          *
-         * @link https://vuejs.org/v2/api/#computed
+         * @link https://vuejs.org/v2/api/#methods
          */
         methods: {
             async fetchNavigation () {

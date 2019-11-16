@@ -25,7 +25,7 @@
         }),
 
         /**
-         * Vue life-cycle hook called synchronously after the Vue instance is created.
+         * Vue life-cycle hook called synchronously before the Vue instance is created.
          *
          * @link https://vuejs.org/v2/api/#created
          */
