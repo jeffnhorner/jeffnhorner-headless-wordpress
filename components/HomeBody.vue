@@ -34,7 +34,7 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex h-full justify-between mx-auto mt-16 mb-8 px-12 w-full;
+        @apply flex h-full justify-between mx-auto mt-16 mb-24 px-12 w-full;
         max-width: 100rem;
     }
 

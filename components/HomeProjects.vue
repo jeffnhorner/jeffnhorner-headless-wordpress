@@ -81,7 +81,7 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex justify-center mb-12 mx-auto px-12 w-full;
+        @apply flex justify-center my-24 mx-auto px-12 w-full;
         max-width: 100rem;
     }
 
