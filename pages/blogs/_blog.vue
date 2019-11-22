@@ -1,13 +1,28 @@
 <template>
-    <div v-if="post">
-        <h1 v-bind:class="$style.title">
-            {{ post.title.rendered }}
-        </h1>
+    <div
+        v-if="post"
+        v-bind:class="$style.container"
+    >
+        <span v-bind:class="$style.spacing" />
+        <section v-bind:class="$style.heroContainer">
+            <BlogPost
+                v-bind:post="post"
+            />
+        </section>
     </div>
 </template>
 
 <script>
     export default {
+        /**
+         * Self contained reusable Vue single-file components.
+         *
+         * @link https://vuejs.org/v2/guide/single-file-components.html
+         */
+        components: {
+            BlogPost: () => import('~/components/BlogPost.vue')
+        },
+
         /**
          * Initial Vue component reactive data.
          *
@@ -35,7 +50,7 @@
         /**
          * Non-cached Vue methods.
          *
-         * @link https://vuejs.org/v2/api/#computed
+         * @link https://vuejs.org/v2/api/#methods
          */
         methods: {
             determineBlogPage () {
@@ -50,7 +65,17 @@
 </script>
 
 <style lang="scss" module>
-    .title {
-        height: 10rem;
+    .container {
+        @apply px-12 w-full;
+        max-width: 100rem;
+    }
+
+    .spacing {
+        @apply block;
+        height: 20vh;
+    }
+
+    .heroContainer {
+        @apply flex items-center;
     }
 </style>

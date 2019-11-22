@@ -8,6 +8,7 @@
         />
         <div v-bind:class="$style.imageContainer">
             <AppImage
+                v-if="page.mainImage"
                 v-bind:class="$style.image"
                 v-bind:image="page.mainImage"
             />

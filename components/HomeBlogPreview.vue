@@ -49,7 +49,7 @@
         /**
          * Vue computed properties are cached, and only re-computed on reactive dependency changes.
          *
-         * @link https://vuejs.org/v2/api/#computed
+         * @link https://vuejs.org/v2/api/#methods
          */
         computed: {
             posts () {

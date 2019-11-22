@@ -12,6 +12,6 @@ components.keys().map((file) => {
     // or module.exports.
     const componentConfiguration = components(file).default || components(file);
 
-    // Return all components that will be registered globall
+    // Return all components that will be registered globally
     return Vue.component(fileName, componentConfiguration);
 });

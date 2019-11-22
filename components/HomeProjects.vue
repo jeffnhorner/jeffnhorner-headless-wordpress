@@ -63,7 +63,7 @@
         /**
          * Non-cached Vue methods.
          *
-         * @link https://vuejs.org/v2/api/#computed
+         * @link https://vuejs.org/v2/api/#methods
          */
         methods: {
             async fetchGithubProjects () {
@@ -81,9 +81,8 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex justify-center mx-auto px-12 relative w-full;
+        @apply flex justify-center mb-12 mx-auto px-12 w-full;
         max-width: 100rem;
-        top: 10rem;
     }
 
     .content {
@@ -95,7 +94,7 @@
     }
 
     .projects {
-        @apply flex justify-center items-center;
+        @apply flex justify-center items-center z-10;
     }
 
     .highlight {
@@ -124,7 +123,7 @@
 
     .abstractContainer {
         @apply absolute w-full;
-        height: 60rem;
+        height: 55rem;
         max-width: 70%;
         background-color: #f7f7f7;
         z-index: -1;
