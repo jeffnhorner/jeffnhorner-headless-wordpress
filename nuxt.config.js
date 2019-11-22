@@ -60,6 +60,7 @@ module.exports = {
     modules: [
         '@nuxtjs/eslint-module',
         '@nuxtjs/axios',
+        // '@nuxtjs/vuetify',
     ],
     axios: {
         baseURL: process.env.NUXT_DEV_API_URL,
