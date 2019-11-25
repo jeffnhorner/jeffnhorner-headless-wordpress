@@ -1,39 +1,39 @@
 {
-  "eslint.validate": [
-    {
-      "language": "vue",
-      "autoFix": true
+    "eslint.validate": [
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        }
+    ],
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.formatOnSave": false
     },
-    {
-      "language": "javascript",
-      "autoFix": true
-    }
-  ],
-  "editor.formatOnSave": true,
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  "[css]": {
-    "editor.formatOnSave": false
-  },
-  "[scss]": {
-    "editor.formatOnSave": false
-  },
-  "stylelint.enable": true,
-  "vetur.validation.style": false,
-  "vetur.format.defaultFormatter.html": "none",
-  "vetur.validation.template": false,
-  "vetur.completion.useScaffoldSnippets": false,
-  "vetur.format.defaultFormatter.css": "none",
-  "vetur.format.defaultFormatter.scss": "none",
-  "vetur.format.defaultFormatter.less": "none",
-  "eslint.autoFixOnSave": true,
-  "editor.tabSize": 4,
-  "files.eol": "\n",
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "css.lint.emptyRules": "ignore",
-  "scss.lint.emptyRules": "ignore",
-  "less.lint.emptyRules": "ignore"
+    "[css]": {
+        "editor.formatOnSave": false
+    },
+    "[scss]": {
+        "editor.formatOnSave": false
+    },
+    "stylelint.enable": true,
+    "vetur.validation.style": false,
+    "vetur.format.defaultFormatter.html": "none",
+    "vetur.validation.template": false,
+    "vetur.completion.useScaffoldSnippets": false,
+    "vetur.format.defaultFormatter.css": "none",
+    "vetur.format.defaultFormatter.scss": "none",
+    "vetur.format.defaultFormatter.less": "none",
+    "eslint.autoFixOnSave": true,
+    "editor.tabSize": 4,
+    "files.eol": "\n",
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "css.lint.emptyRules": "ignore",
+    "scss.lint.emptyRules": "ignore",
+    "less.lint.emptyRules": "ignore"
 }
