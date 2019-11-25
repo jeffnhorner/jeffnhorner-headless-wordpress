@@ -67,15 +67,23 @@
          */
         methods: {
             async fetchGithubProjects () {
-                const { data: githubProjects } = await this.$axios.get('https://api.github.com/users/jeffnhorner/starred');
+                const { data: githubProjects } = await this.$axios.get(
+                    'https://api.github.com/users/jeffnhorner/starred'
+                );
 
                 // Define the highlighted project
-                this.highlight = githubProjects.find(project => project.name === 'electric-io');
+                this.highlight = githubProjects.find(
+                    project => project.name === 'electric-io'
+                );
 
                 // Define the projects we want to feature
-                this.features = githubProjects.filter(project => project.name === 'website-template-for-creatives' || project.name === 'jeffnhorner-headless-wordpress');
-            }
-        }
+                this.features = githubProjects.filter(
+                    project =>
+                        project.name === 'website-template-for-creatives' ||
+                        project.name === 'jeffnhorner-headless-wordpress'
+                );
+            },
+        },
     };
 </script>
 
