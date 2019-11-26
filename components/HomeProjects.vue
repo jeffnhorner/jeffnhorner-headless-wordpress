@@ -6,9 +6,7 @@
             </h4>
             <div v-bind:class="$style.projects">
                 <div v-bind:class="$style.highlight">
-                    <HomeProjectHighlight
-                        v-bind:project="highlight"
-                    />
+                    <HomeProjectHighlight v-bind:project="highlight" />
                 </div>
                 <div v-bind:class="$style.features">
                     <HomeProjectFeature
@@ -72,9 +70,7 @@
                 );
 
                 // Define the highlighted project
-                this.highlight = githubProjects.find(
-                    project => project.name === 'electric-io'
-                );
+                this.highlight = githubProjects.find(project => project.name === 'electric-io');
 
                 // Define the projects we want to feature
                 this.features = githubProjects.filter(
@@ -125,7 +121,7 @@
 
         > a {
             @apply lowercase self-end text-white text-lg py-8 px-16;
-            background-color: #0071FF;
+            background-color: #0071ff;
         }
     }
 
