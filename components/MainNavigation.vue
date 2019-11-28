@@ -11,7 +11,7 @@
             />
         </div>
         <div v-bind:class="$style.bottomMenu">
-            <span
+            <!-- <span
                 v-bind:class="$style.logoWrapper"
                 v-on:click="$store.dispatch('modules/navigation/close')"
             >
@@ -22,7 +22,7 @@
                         v-bind:image="generalSettings.logo"
                     />
                 </NuxtLink>
-            </span>
+            </span> -->
             <button
                 title="Menu Icon"
                 v-bind:class="[
@@ -125,11 +125,10 @@
 </script>
 
 <style lang="scss" module>
-
     .container {
         @apply items-center fixed flex flex-col w-full z-20;
         transition: transform 500ms;
-        transform: translateY(-70%);
+        transform: translateY(-75%);
 
         @screen lg {
             transform: translateY(-75%);
@@ -145,7 +144,7 @@
 
     .topMenu {
         @apply flex items-center justify-center text-center w-full z-10;
-        background-color: #f7f7f7;
+        background-color: #fff;
         height: 10rem;
 
         @screen lg {
@@ -157,8 +156,9 @@
     }
 
     .bottomMenu {
-        @apply flex justify-between relative w-full mt-20 z-10 px-12;
+        @apply flex justify-end relative w-full pt-12 pb-4 z-10 px-12;
         max-width: 100rem;
+        height: 2.5rem;
     }
 
     .logoWrapper {
@@ -190,7 +190,7 @@
     // Defined variables for the hamburger icon style
     $height-icon: 1rem;
     $width-line: 1.75rem;
-    $height-line: .2rem;
+    $height-line: .1rem;
 
     // Defined variables for the hamburger icon transition (open <-> close)
     $transition-time: 0.4s;
@@ -205,7 +205,7 @@
 
         .line {
             @apply absolute block;
-            background: #262626;
+            background: #ffffff;
             border-radius: ($height-line / 2);
             height: $height-line;
             left: 0;

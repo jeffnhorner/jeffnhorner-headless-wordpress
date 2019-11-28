@@ -1,12 +1,6 @@
 <template>
     <div v-if="page">
-        <HomeMasthead v-bind:page="page" />
-        <HomeBody v-bind:page="page">
-            <template v-slot:posts>
-                <HomeBlogPreview />
-            </template>
-        </HomeBody>
-        <HomeProjects />
+        <HomeMasthead />
     </div>
 </template>
 
@@ -19,9 +13,6 @@
          */
         components: {
             HomeMasthead: () => import('~/components/HomeMasthead'),
-            HomeBody: () => import('~/components/HomeBody'),
-            HomeBlogPreview: () => import('~/components/HomeBlogPreview'),
-            HomeProjects: () => import('~/components/HomeProjects'),
         },
 
         /**

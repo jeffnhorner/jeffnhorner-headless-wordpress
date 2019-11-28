@@ -1,63 +1,28 @@
 <template>
     <div v-bind:class="$style.container">
-        <h1 v-bind:class="$style.title">
-            {{ page.title }}
-        </h1>
-        <h2 v-bind:class="$style.subtitle">
-            {{ page.subtitle }}
-        </h2>
-        <hr v-bind:class="$style.divider">
-        <p v-bind:class="$style.description">
-            {{ page.description }}
-        </p>
+        <h1>Test</h1>
+        <div v-bind:class="$style.skewedBox" />
     </div>
 </template>
 
 <script>
     export default {
-        /**
-         * A collection of data that is exposed for parent components to accept.
-         *
-         * @link https://vuejs.org/v2/api/#props
-         */
-        props: {
-            page: {
-                type: Object,
-                required: true,
-            },
-        },
+
     };
 </script>
 
 <style lang="scss" module>
     .container {
-        @apply flex flex-col justify-center mx-auto px-12 w-full;
-        max-width: 100rem;
-        height: 95vh;
+        @apply flex items-center w-full z-10;
+        height: 100vh;
     }
 
-    .title {
-        @apply font-extrabold -mb-8 tracking-wide;
-        color: #262626;
-        font-size: 12rem;
-    }
-
-    .divider {
-        @apply w-full;
-        background-color: #262626;
-        height: .5rem;
-        max-width: 1.5rem;
-    }
-
-    .subtitle {
-        @apply font-thin text-xl tracking-wide;
-        color: #3c3c3c;
-        padding-bottom: 15px;
-    }
-
-    .description {
-        @apply font-thin leading-loose mt-4 tracking-wide w-full;
-        color: #3c3c3c;
-        max-width: 30rem;
+    .skewedBox {
+        @apply absolute -mt-40 w-full;
+        height: 85%;
+        background: #34495E;
+        background-color: #34495E;
+        transform: skew(0deg, 5deg);
+        z-index: -1;
     }
 </style>

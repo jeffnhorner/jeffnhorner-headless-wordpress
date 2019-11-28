@@ -61,9 +61,11 @@
         color: #262626;
 
         &:hover {
-            background: #0071FF;
+            border: none;
+            background: #41B883;
+            background: -webkit-linear-gradient(#93F9B9, #41B883);
+            background: linear-gradient(#93F9B9, #41B883);
             color: #fff;
-            transition: .2s ease-in-out;
         }
 
         /**
@@ -73,7 +75,9 @@
          * see https://github.com/css-modules/css-modules/pull/65#issuecomment-188705905
          */
         > :global(.nuxt-link-exact-active) {
-            background-color: #0071FF;
+            background: #41B883;
+            background: -webkit-linear-gradient(#93F9B9, #41B883);
+            background: linear-gradient(#93F9B9, #41B883);
             color: #fff;
         }
     }
