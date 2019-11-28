@@ -11,7 +11,7 @@
             />
         </div>
         <div v-bind:class="$style.bottomMenu">
-            <!-- <span
+            <span
                 v-bind:class="$style.logoWrapper"
                 v-on:click="$store.dispatch('modules/navigation/close')"
             >
@@ -22,7 +22,7 @@
                         v-bind:image="generalSettings.logo"
                     />
                 </NuxtLink>
-            </span> -->
+            </span>
             <button
                 title="Menu Icon"
                 v-bind:class="[
@@ -53,7 +53,7 @@
          * @link https://vuejs.org/v2/guide/single-file-components.html
          */
         components: {
-            NavigationBar: () => import('./NavigationBar')
+            NavigationBar: () => import('./NavigationBar'),
         },
 
         /**
@@ -102,7 +102,7 @@
                 const [
                     { default: icons },
                     { default: NavigationItem },
-                    { data: navigation }
+                    { data: navigation },
                 ] = await Promise.all([
                     import('~/utilities/constants/icons'),
                     import('~/models/cms/NavigationItem'),
@@ -120,7 +120,7 @@
                     });
                 });
             },
-        }
+        },
     };
 </script>
 
@@ -156,7 +156,7 @@
     }
 
     .bottomMenu {
-        @apply flex justify-end relative w-full pt-12 pb-4 z-10 px-12;
+        @apply items-center flex justify-between relative w-full pt-12 pb-4 z-10 px-12;
         max-width: 100rem;
         height: 2.5rem;
     }
@@ -166,7 +166,7 @@
     }
 
     .logo {
-        width: 2.5rem;
+        width: 3rem;
     }
 
     .menuStateIcon {
