@@ -881,6 +881,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@mdi/font@^4.6.95":
+  version "4.6.95"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-4.6.95.tgz#f97ecbdfd59c183d19f3a24a6fe4f84f579cf287"
+  integrity sha512-m5AjVnVS9Xi4xbQQt2rh+ClVcWT9oFqSmo8mZs7teOGbAmUrZ9km1RuNRNKIr7LV3vy/zCeEfMc154Z9l+ab0g==
+
 "@nuxt/babel-preset-app@2.8.1":
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/@nuxt/babel-preset-app/-/babel-preset-app-2.8.1.tgz#4b6b9ec293d66426034b30409ebda8b17e625014"
@@ -10248,6 +10253,11 @@ vuetify-loader@^1.3.0:
   integrity sha512-ZUGo248CdREWNNk/eETU7or64Xmgily0Dfw61Hj0BDG9fpN0E0bzC7dWwC3BXj3psZjFxLl7ff7KV8qxR4maoA==
   dependencies:
     loader-utils "^1.2.0"
+
+vuetify@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.0.tgz#58c72247251412b5e804c8c38a0e12bcb736d949"
+  integrity sha512-AbtHkWdvxF3QrR/xCpu2XL+KJ59Z7/KQQmbV4gPn6Q3VlQ5tXaGR4AJO1uNrvGCTlLlQxWHGcwMGOiHU7aIlqg==
 
 vuetify@^2.1.0:
   version "2.1.11"

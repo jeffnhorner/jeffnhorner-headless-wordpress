@@ -6,9 +6,7 @@
             </h4>
             <div v-bind:class="$style.projects">
                 <div v-bind:class="$style.highlight">
-                    <HomeProjectHighlight
-                        v-bind:project="highlight"
-                    />
+                    <HomeProjectHighlight v-bind:project="highlight" />
                 </div>
                 <div v-bind:class="$style.features">
                     <HomeProjectFeature
@@ -67,15 +65,21 @@
          */
         methods: {
             async fetchGithubProjects () {
-                const { data: githubProjects } = await this.$axios.get('https://api.github.com/users/jeffnhorner/starred');
+                const { data: githubProjects } = await this.$axios.get(
+                    'https://api.github.com/users/jeffnhorner/starred'
+                );
 
                 // Define the highlighted project
                 this.highlight = githubProjects.find(project => project.name === 'electric-io');
 
                 // Define the projects we want to feature
-                this.features = githubProjects.filter(project => project.name === 'website-template-for-creatives' || project.name === 'jeffnhorner-headless-wordpress');
-            }
-        }
+                this.features = githubProjects.filter(
+                    project =>
+                        project.name === 'website-template-for-creatives' ||
+                        project.name === 'jeffnhorner-headless-wordpress'
+                );
+            },
+        },
     };
 </script>
 
@@ -117,7 +121,7 @@
 
         > a {
             @apply lowercase self-end text-white text-lg py-8 px-16;
-            background-color: #0071FF;
+            background-color: #0071ff;
         }
     }
 
