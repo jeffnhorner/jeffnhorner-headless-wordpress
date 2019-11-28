@@ -53,6 +53,7 @@ module.exports = {
     plugins: [
         '~/plugins/frameworkComponents.js',
         '~/plugins/dispatchGlobalData.server.js',
+        '~plugins/vuetify',
     ],
   /*
   ** Nuxt.js modules
