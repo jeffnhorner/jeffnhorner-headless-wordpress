@@ -4,6 +4,7 @@
             v-bind:to="to"
         >
             {{ linkText }}
+            <slot v-if="!linkText" />
         </NuxtLink>
     </div>
 </template>
@@ -22,7 +23,7 @@
             },
             linkText: {
                 type: String,
-                required: true,
+                default: '',
             },
         },
     };

@@ -2,7 +2,6 @@
     <div>
         <MainHeader />
         <nuxt />
-        <MainFooter />
     </div>
 </template>
 
@@ -15,12 +14,11 @@
          */
         components: {
             MainHeader: () => import('~/components/MainHeader.vue'),
-            MainFooter: () => import('~/components/MainFooter.vue'),
         },
     };
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
     html {
         font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,'Helvetica Neue', Arial, sans-serif;
         font-size: 16px;
