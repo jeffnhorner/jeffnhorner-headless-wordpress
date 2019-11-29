@@ -1,26 +1,28 @@
 <template>
     <div v-bind:class="$style.container">
         <div v-bind:class="$style.wrapper">
-            <h1 v-bind:class="$style.headline">
-                create design build
-            </h1>
-            <span v-bind:class="$style.subHeadlinesWrapper">
-                <p>experiences</p>
-                <p>websites</p>
-                <p>web apps</p>
-            </span>
-            <VBtn
-                color="#fff"
-                depressed
-                nuxt
-                outlined
-                tile
-                to="/contact"
-                x-large
-                v-bind:class="$style.calltoAction"
-            >
-                Let's Build
-            </VBtn>
+            <div v-bind:class="$style.content">
+                <h1 v-bind:class="$style.headline">
+                    create design build
+                </h1>
+                <span v-bind:class="$style.subHeadlinesWrapper">
+                    <p>experiences</p>
+                    <p>websites</p>
+                    <p>web apps</p>
+                </span>
+                <VBtn
+                    color="#fff"
+                    depressed
+                    nuxt
+                    outlined
+                    tile
+                    to="/contact"
+                    x-large
+                    v-bind:class="$style.calltoAction"
+                >
+                    Let's Build
+                </VBtn>
+            </div>
         </div>
         <div v-bind:class="[$style.skewedBox, $style.overlay]" />
     </div>
@@ -65,15 +67,20 @@
     }
 
     .wrapper {
-        @apply flex flex-col items-end justify-around px-8 mx-auto w-full;
-        min-height: 22rem;
+        @apply px-8 mx-auto w-full;
         max-width: 100rem;
+    }
+
+    .content {
+        @apply flex flex-col h-full items-end justify-between;
+        min-height: 22rem;
 
         @screen sm {
-            min-height: 16rem;
+            min-height: 15rem;
         }
         @screen lg {
-            min-height: 20rem;
+            border-left: .025rem solid #fff;
+            min-height: 18rem;
         }
     }
 
