@@ -40,7 +40,7 @@
             navigation: {
                 type: Array,
                 required: true,
-            }
+            },
         },
     };
 </script>
@@ -66,6 +66,7 @@
             background: -webkit-linear-gradient(#93F9B9, #41B883);
             background: linear-gradient(#93F9B9, #41B883);
             color: #fff;
+            transition: .1s ease-in-out;
         }
 
         /**
