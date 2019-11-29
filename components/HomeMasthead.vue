@@ -22,7 +22,7 @@
                 Let's Build
             </VBtn>
         </div>
-        <div v-bind:class="$style.skewedBox" />
+        <div v-bind:class="[$style.skewedBox, $style.overlay]" />
     </div>
 </template>
 
@@ -33,31 +33,56 @@
 <style lang="scss" module>
     .container {
         @apply flex items-center w-full z-10;
-        height: 85vh;
+        height: 75vh;
     }
 
     .skewedBox {
         @apply absolute h-full -mt-40 w-full;
-        background: #34495e;
-        background-color: #34495e;
+        background: url('https://live.staticflickr.com/65535/49141928281_d7b2bb814c_o.jpg') no-repeat center;
+        background-size: cover;
         transform: skew(0deg, 5deg);
         z-index: -1;
+
+        &.overlay:before {
+            @apply absolute block h-full w-full;
+            background-color: #34495e;
+            content: '';
+            top: 0;
+            right: 0;
+            opacity: .85;
+        }
     }
 
     .wrapper {
         @apply flex flex-col items-end justify-around px-8 mx-auto w-full;
-        min-height: 20rem;
+        min-height: 22rem;
         max-width: 100rem;
+
+        @screen sm {
+            min-height: 16rem;
+        }
+        @screen lg {
+            min-height: 20rem;
+        }
     }
 
     .headline {
-        @apply font-black leading-none uppercase;
+        @apply font-black leading-none text-5xl text-right uppercase w-full;
         color: #fff;
-        font-size: 4.5rem;
+        max-width: 20rem;
+
+        @screen sm {
+            font-size: 2.75rem;
+            max-width: 100%;
+        }
+        @screen lg {
+            font-size: 4.5rem;
+            max-width: 100%;
+        }
     }
 
     .subHeadlinesWrapper {
-        @apply font-thin mb-1 text-xl text-right;
+        @apply font-thin mb-1 mr-1 text-xl text-right;
         color: #fff;
 
         :first-child {
@@ -66,10 +91,55 @@
     }
 
     .calltoAction {
-        @apply text-xl lowercase font-bold;
+        @apply font-bold lowercase mr-1 relative text-xl;
+        -webkit-transform: perspective(.25rem) translateZ(0);
+        transform: perspective(.25rem) translateZ(0);
+        box-shadow: 0 0 .25rem rgba(0, 0, 0, 0);
+        -webkit-transition-property: color;
+        transition-property: color;
+        -webkit-transition-duration: 0.35s;
+        transition-duration: 0.35s;
 
         &:global(.v-btn:not(.v-btn--round).v-size--x-large) {
             @apply p-8;
+        }
+
+        &:global(.theme--light.v-btn:hover:before) {
+            @apply opacity-100;
+        }
+
+        &:before {
+            @apply absolute;
+            content: "";
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #41B883;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+            -webkit-transition-duration: 0.35s;
+            transition-duration: 0.35s;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+
+        &:hover:before,
+        &:hover:focus:before,
+        &:hover:active {
+            color: #41B883;
+        }
+
+        &:hover:before,
+        &:focus:before,
+        &:active:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
         }
     }
 </style>
