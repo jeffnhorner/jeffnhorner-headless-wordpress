@@ -33,15 +33,26 @@
 <style lang="scss" module>
     .container {
         @apply flex items-center w-full z-10;
-        height: 75vh;
+        height: 50vh;
+
+        @screen sm {
+            height: 60vh;
+        }
+        @screen lg {
+            height: 75vh;
+        }
     }
 
     .skewedBox {
-        @apply absolute h-full -mt-40 w-full;
+        @apply absolute h-full -mt-56 w-full;
         background: url('https://live.staticflickr.com/65535/49141928281_d7b2bb814c_o.jpg') no-repeat center;
         background-size: cover;
         transform: skew(0deg, 5deg);
         z-index: -1;
+
+        @screen lg {
+            @apply -mt-40;
+        }
 
         &.overlay:before {
             @apply absolute block h-full w-full;
