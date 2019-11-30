@@ -1,0 +1,118 @@
+<template>
+    <div v-bind:class="$style.container">
+        <NuxtLink
+            to="/about"
+            v-bind:class="[$style.storyHighlight, $style.overlay]"
+        >
+            <span v-bind:class="$style.highlightTitle">my story</span>
+        </NuxtLink>
+        <NuxtLink
+            to="/portfolio"
+            v-bind:class="[$style.projectsHighlight, $style.overlay]"
+        >
+            <span v-bind:class="$style.highlightTitle">my work</span>
+        </NuxtLink>
+    </div>
+</template>
+
+<script>
+    export default {};
+</script>
+
+<style lang="scss" module>
+    .container {
+        @apply flex flex-col mx-auto -mt-20 mb-24 w-full;
+        max-width: 100rem;
+
+        @screen sm {
+            @apply -mt-40;
+        }
+        @screen md {
+            @apply flex-row -mt-48;
+        }
+        @screen lg {
+            @apply -mt-64;
+        }
+    }
+
+    .storyHighlight,
+    .projectsHighlight {
+        @apply flex items-center justify-center h-full relative m-auto my-4;
+        height: 24rem;
+        width: 90%;
+        -webkit-transform: perspective(.05rem) translateZ(0);
+        transform: perspective(.05rem) translateZ(0);
+        box-shadow: 0 0 .05rem rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+
+        &.overlay:before {
+            @apply absolute block h-full opacity-75 w-full;
+            background-color: #fff;
+            content: '';
+            top: 0;
+            right: 0;
+        }
+
+        @screen md {
+            @apply w-full;
+            height: 28rem;
+
+            &:hover,
+            &:focus,
+            &:active {
+                -webkit-transform: scale(1.05) rotate(2deg);
+                transform: scale(1.05) rotate(2deg);
+            }
+
+            &:hover.overlay:before {
+                background: #41B883;
+                transition: .2s ease-in-out;
+                opacity: .9;
+            }
+
+            &:hover > .highlightTitle {
+                color: white;
+                transition: .2s ease-in-out;
+            }
+        }
+        @screen lg {
+            height: 32rem;
+        }
+    }
+
+    .storyHighlight {
+        background: url('https://live.staticflickr.com/65535/49146756007_9747a4869b_o.jpg') no-repeat center;
+        background-size: cover;
+
+        @screen md {
+            @apply mr-4 ml-8;
+        }
+        @screen lg {
+            @apply mx-8;
+        }
+    }
+
+    .projectsHighlight {
+        background: url('https://live.staticflickr.com/65535/49146077918_be904dd4ff_o.jpg') no-repeat center;
+        background-size: cover;
+
+        @screen md {
+            @apply mr-8 ml-4;
+        }
+        @screen lg {
+            @apply mx-8;
+        }
+    }
+
+    .highlightTitle {
+        @apply absolute font-black text-2xl uppercase;
+        color: #34495e;
+
+        @screen md {
+            @apply text-4xl;
+        }
+    }
+</style>

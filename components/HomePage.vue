@@ -1,6 +1,7 @@
 <template>
     <div v-if="page">
         <HomeMasthead />
+        <HomeHighlights />
     </div>
 </template>
 
@@ -13,6 +14,7 @@
          */
         components: {
             HomeMasthead: () => import('~/components/HomeMasthead'),
+            HomeHighlights: () => import('~/components/HomeHighlights'),
         },
 
         /**
@@ -64,6 +66,6 @@
                     }
                 });
             },
-        }
+        },
     };
 </script>
