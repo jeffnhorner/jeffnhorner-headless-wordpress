@@ -56,17 +56,13 @@
 
     .navigationItem {
         @apply flex self-center text-sm w-1/5 h-full;
-        border-bottom: .025rem solid #dddddd;
-        border-right: .025rem solid #dddddd;
         color: #262626;
 
         &:hover {
-            border: none;
-            background: #41B883;
-            background: -webkit-linear-gradient(#93F9B9, #41B883);
-            background: linear-gradient(#93F9B9, #41B883);
-            color: #fff;
-            transition: .1s ease-in-out;
+            background: #fff;
+            border-bottom: .5rem solid #8E2DE2;
+            color: #8E2DE2;
+            transition: .2s ease-in-out;
         }
 
         /**
@@ -76,10 +72,9 @@
          * see https://github.com/css-modules/css-modules/pull/65#issuecomment-188705905
          */
         > :global(.nuxt-link-exact-active) {
-            background: #41B883;
-            background: -webkit-linear-gradient(#93F9B9, #41B883);
-            background: linear-gradient(#93F9B9, #41B883);
-            color: #fff;
+            background: #fff;
+            border-bottom: .5rem solid #8E2DE2;
+            color: #8E2DE2;
         }
     }
 
