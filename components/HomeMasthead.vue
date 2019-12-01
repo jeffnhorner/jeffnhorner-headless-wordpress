@@ -35,10 +35,10 @@
 <style lang="scss" module>
     .container {
         @apply flex items-center w-full z-10;
-        height: 50vh;
+        height: 60vh;
 
         @screen sm {
-            height: 60vh;
+            height: 65vh;
         }
         @screen lg {
             height: 75vh;
@@ -50,6 +50,7 @@
         background: url('https://live.staticflickr.com/65535/49141928281_d7b2bb814c_o.jpg') no-repeat center;
         background-size: cover;
         transform: skew(0deg, 5deg);
+        opacity: .9;
         z-index: -1;
 
         @screen lg {

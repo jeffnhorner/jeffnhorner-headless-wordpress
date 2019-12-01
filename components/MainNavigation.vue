@@ -120,6 +120,13 @@
                     });
                 });
             },
+
+            watchBackgroundColor () {
+                const scroll = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
+
+                console.log(scroll);
+            }
         },
     };
 </script>
@@ -132,9 +139,6 @@
 
         @screen lg {
             transform: translateY(-75%);
-        }
-        @screen xl {
-            transform: translateY(-80%);
         }
     }
 
@@ -156,9 +160,8 @@
     }
 
     .bottomMenu {
-        @apply items-center flex justify-between relative w-full pt-12 pb-4 z-10 px-12;
+        @apply items-center flex justify-between relative w-full pt-12 pb-4 px-8 z-10;
         max-width: 100rem;
-        height: 2.5rem;
     }
 
     .logoWrapper {
@@ -205,7 +208,7 @@
 
         .line {
             @apply absolute block;
-            background: #ffffff;
+            background: #fff;
             border-radius: ($height-line / 2);
             height: $height-line;
             left: 0;

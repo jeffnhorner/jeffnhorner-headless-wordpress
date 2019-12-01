@@ -2,6 +2,7 @@
     <div>
         <MainHeader />
         <nuxt />
+        <MainFooter />
     </div>
 </template>
 
@@ -13,7 +14,8 @@
          * @link https://vuejs.org/v2/guide/single-file-components.html
          */
         components: {
-            MainHeader: () => import('~/components/MainHeader.vue'),
+            MainHeader: () => import('~/components/MainHeader'),
+            MainFooter: () => import('~/components/MainFooter'),
         },
     };
 </script>

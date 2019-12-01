@@ -9,7 +9,7 @@
             "autoFix": true
         }
     ],
-    "editor.formatOnSave": true,
+    // "editor.formatOnSave": true,
     "[javascript]": {
         "editor.formatOnSave": false
     },
