@@ -140,9 +140,6 @@
         @screen lg {
             transform: translateY(-75%);
         }
-        @screen xl {
-            transform: translateY(-80%);
-        }
     }
 
     .visibleContainer {

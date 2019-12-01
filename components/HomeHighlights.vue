@@ -21,7 +21,7 @@
 
 <style lang="scss" module>
     .container {
-        @apply flex flex-col mx-auto -mt-20 mb-24 w-full;
+        @apply flex flex-col mx-auto -mt-20 mb-12 w-full;
         max-width: 100rem;
 
         @screen sm {
@@ -30,15 +30,12 @@
         @screen md {
             @apply flex-row -mt-48;
         }
-        @screen lg {
-            @apply -mt-64;
-        }
     }
 
     .storyHighlight,
     .projectsHighlight {
         @apply flex items-center justify-center h-full relative m-auto my-4;
-        height: 24rem;
+        height: 20rem;
         width: 90%;
         -webkit-transform: perspective(.05rem) translateZ(0);
         transform: perspective(.05rem) translateZ(0);
@@ -56,6 +53,9 @@
             right: 0;
         }
 
+        @screen xs {
+            height: 24rem;
+        }
         @screen md {
             @apply w-full;
             height: 28rem;
@@ -63,6 +63,7 @@
             &:hover,
             &:focus,
             &:active {
+                box-shadow: .25rem .25rem 1rem #262626;
                 -webkit-transform: scale(1.05) rotate(2deg);
                 transform: scale(1.05) rotate(2deg);
             }
@@ -70,7 +71,7 @@
             &:hover.overlay:before {
                 background: #41B883;
                 transition: .2s ease-in-out;
-                opacity: .9;
+                opacity: .825;
             }
 
             &:hover > .highlightTitle {

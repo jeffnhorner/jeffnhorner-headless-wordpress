@@ -38,10 +38,10 @@
         height: 60vh;
 
         @screen sm {
-            height: 70vh;
+            height: 65vh;
         }
         @screen lg {
-            height: 85vh;
+            height: 75vh;
         }
     }
 
