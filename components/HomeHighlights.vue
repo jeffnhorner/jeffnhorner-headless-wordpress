@@ -64,15 +64,10 @@
             &:hover,
             &:focus,
             &:active {
-                box-shadow: .25rem .25rem 1rem #262626;
+                box-shadow: .25rem .25rem .75rem #595959;
                 -webkit-transform: scale(1.05) rotate(2deg);
                 transform: scale(1.05) rotate(2deg);
             }
-
-            // &:hover.overlay:before {
-            //     @apply opacity-75;
-            //     transition: .2s ease-in-out;
-            // }
 
             &:hover > .highlightTitle {
                 color: #262626;
