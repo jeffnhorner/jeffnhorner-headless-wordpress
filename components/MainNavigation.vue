@@ -193,7 +193,7 @@
     // Defined variables for the hamburger icon style
     $height-icon: 1rem;
     $width-line: 1.75rem;
-    $height-line: .1rem;
+    $height-line: .125rem;
 
     // Defined variables for the hamburger icon transition (open <-> close)
     $transition-time: 0.4s;
