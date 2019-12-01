@@ -11,8 +11,12 @@
 </script>
 
 <style lang="scss" module>
+    footer {
+        @apply px-8;
+    }
+
     .footerText {
-        @apply font-thin flex items-center justify-center text-sm w-full;
+        @apply font-thin flex items-center justify-center text-sm text-center w-full;
         color: #262626;
         min-height: 4rem;
     }

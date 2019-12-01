@@ -36,7 +36,7 @@
     .projectsHighlight {
         @apply flex items-center justify-center h-full relative m-auto my-4;
         height: 20rem;
-        width: 90%;
+        width: 83%;
         -webkit-transform: perspective(.05rem) translateZ(0);
         transform: perspective(.05rem) translateZ(0);
         box-shadow: 0 0 .05rem rgba(0, 0, 0, 0);
@@ -55,6 +55,7 @@
 
         @screen xs {
             height: 24rem;
+            width: 90%;
         }
         @screen md {
             @apply w-full;
@@ -68,14 +69,13 @@
                 transform: scale(1.05) rotate(2deg);
             }
 
-            &:hover.overlay:before {
-                background: #41B883;
-                transition: .2s ease-in-out;
-                opacity: .825;
-            }
+            // &:hover.overlay:before {
+            //     @apply opacity-75;
+            //     transition: .2s ease-in-out;
+            // }
 
             &:hover > .highlightTitle {
-                color: white;
+                color: #262626;
                 transition: .2s ease-in-out;
             }
         }
@@ -91,7 +91,7 @@
         @screen md {
             @apply mr-4 ml-8;
         }
-        @screen lg {
+        @screen xl {
             @apply mx-8;
         }
     }
@@ -103,14 +103,14 @@
         @screen md {
             @apply mr-8 ml-4;
         }
-        @screen lg {
+        @screen xl {
             @apply mx-8;
         }
     }
 
     .highlightTitle {
         @apply absolute font-black text-2xl uppercase;
-        color: #34495e;
+        color: #808080;
 
         @screen md {
             @apply text-4xl;
