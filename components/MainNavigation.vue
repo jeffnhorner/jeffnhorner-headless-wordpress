@@ -47,7 +47,6 @@
 
 <script>
     export default {
-
         /**
          * Self contained reusable Vue single-file components.
          *
