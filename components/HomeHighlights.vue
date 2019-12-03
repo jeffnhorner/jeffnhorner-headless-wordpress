@@ -35,13 +35,13 @@
     .storyHighlight,
     .projectsHighlight {
         @apply flex items-center justify-center h-full relative m-auto my-4;
+        box-shadow: 0 .05rem .25rem -.05rem #595959;
         height: 20rem;
         width: 83%;
+        -webkit-transition: 0.3s all;
+        transition: .3s all;
         -webkit-transform: perspective(.05rem) translateZ(0);
         transform: perspective(.05rem) translateZ(0);
-        box-shadow: 0 0 .05rem rgba(0, 0, 0, 0);
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
         -webkit-transition-property: transform;
         transition-property: transform;
 
@@ -65,13 +65,13 @@
             &:focus,
             &:active {
                 box-shadow: .25rem .25rem .75rem #595959;
-                -webkit-transform: scale(1.05) rotate(2deg);
-                transform: scale(1.05) rotate(2deg);
+                -webkit-transform: scale(1.03) rotate(1.5deg);
+                transform: scale(1.03) rotate(1.5deg);
             }
 
             &:hover > .highlightTitle {
                 color: #262626;
-                transition: .2s ease-in-out;
+                transition: .2s all;
             }
         }
         @screen lg {
@@ -104,7 +104,7 @@
     }
 
     .highlightTitle {
-        @apply absolute font-black text-2xl uppercase;
+        @apply absolute font-black text-2xl p-32 uppercase;
         color: #808080;
 
         @screen md {

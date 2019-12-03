@@ -9,7 +9,7 @@ export const getters = {
 export const mutations = {
     updateIsOpen: (state, isOpen) => {
         state.isOpen = isOpen;
-    }
+    },
 };
 
 export const actions = {

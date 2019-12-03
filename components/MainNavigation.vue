@@ -19,7 +19,7 @@
                     <AppImage
                         v-if="generalSettings && generalSettings.logo"
                         v-bind:class="$style.logo"
-                        v-bind:image="generalSettings.logo"
+                        v-bind:image="isHomepage ? generalSettings.alternativeLogo : generalSettings.logo"
                     />
                 </NuxtLink>
             </span>
@@ -33,9 +33,9 @@
                 ]"
                 v-on:click="$store.dispatch(`modules/navigation/${hasExpandedMenu ? 'close' : 'open'}`)"
             >
-                <span v-bind:class="[$style.line, $style.line1]" />
-                <span v-bind:class="[$style.line, $style.line2]" />
-                <span v-bind:class="[$style.line, $style.line3]" />
+                <span v-bind:class="[$style.line, $style.line1, { [$style.lineDark] : !isHomepage }]" />
+                <span v-bind:class="[$style.line, $style.line2, { [$style.lineDark] : !isHomepage }]" />
+                <span v-bind:class="[$style.line, $style.line3, { [$style.lineDark] : !isHomepage }]" />
             </button>
         </div>
         <div
@@ -47,6 +47,7 @@
 
 <script>
     export default {
+
         /**
          * Self contained reusable Vue single-file components.
          *
@@ -77,6 +78,10 @@
 
             hasExpandedMenu () {
                 return this.$store.getters['modules/navigation/isOpen'];
+            },
+
+            isHomepage () {
+                return this.$route.path === '/';
             },
         },
 
@@ -120,13 +125,6 @@
                     });
                 });
             },
-
-            watchBackgroundColor () {
-                const scroll = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
-                    window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
-
-                console.log(scroll);
-            }
         },
     };
 </script>
@@ -228,6 +226,10 @@
             &.line3 {
                 top: 100%;
             }
+        }
+
+        .lineDark {
+            background-color: #262626;
         }
 
         &:hover {

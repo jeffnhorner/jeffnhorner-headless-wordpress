@@ -21,6 +21,15 @@ export default class GlobalSettings {
     }
 
     /**
+     * Getter for the alternative global website logo
+     *
+     * @return  {String}
+     */
+    get alternativeLogo () {
+        return this[_fields].website_logo_alt;
+    }
+
+    /**
      * Getter for the global website favicon
      *
      * @return  {String}

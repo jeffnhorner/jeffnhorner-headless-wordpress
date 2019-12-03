@@ -1,8 +1,10 @@
 <template>
-    <component
-        v-bind:is="component"
-        v-if="component"
-    />
+    <section>
+        <component
+            v-bind:is="component"
+            v-if="component"
+        />
+    </section>
 </template>
 
 <script>
@@ -23,6 +25,18 @@
         data: () => ({
             component: null,
         }),
+
+        /**
+         * asyncData is called server-side once (on the first request to the Nuxt app)
+         * and client-side when navigating to further routes.
+         *
+         * @link https://nuxtjs.org/guide/async-data
+         */
+        async asyncData ({ store, route }) {
+            // Batch of required vuex actions to fetch necessary data into view
+            await store.dispatch('modules/pages/fetchCMSPages');
+            await store.dispatch('modules/posts/fetchCMSPosts');
+        },
 
         /**
          * Vue life-cycle hook called synchronously before the Vue instance is created.
