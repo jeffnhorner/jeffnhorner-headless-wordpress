@@ -57,12 +57,12 @@
     .navigationItem {
         @apply flex self-center text-sm w-1/5 h-full;
         color: #262626;
+        transition: .2s all;
 
         &:hover {
             background: #fff;
             border-bottom: .5rem solid #8E2DE2;
             color: #8E2DE2;
-            transition: .2s ease-in-out;
         }
 
         /**

@@ -17,7 +17,9 @@ export const mutations = {
 export const actions = {
     async fetchCMSPosts ({ state, commit }) {
         // If the posts array already contains data, there's no need to make a new call
-        if (state.posts.length) return;
+        if (state.posts.length) {
+            return;
+        };
 
         try {
             // Make request to CMS /pages endpoint to get page data

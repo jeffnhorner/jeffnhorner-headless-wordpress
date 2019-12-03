@@ -1,8 +1,10 @@
 <template>
-    <component
-        v-bind:is="component"
-        v-if="component"
-    />
+    <section>
+        <component
+            v-bind:is="component"
+            v-if="component"
+        />
+    </section>
 </template>
 
 <script>
@@ -23,6 +25,13 @@
         data: () => ({
             component: null,
         }),
+
+        async asyncData ({ store, route }) {
+            // Batch of required vuex actions to fetch necessary data into view
+            await store.dispatch('modules/pages/fetchCMSPages');
+            await store.dispatch('modules/posts/fetchCMSPosts');
+            await store.dispatch('modules/navigation/setCurrentPath', route.path);
+        },
 
         /**
          * Vue life-cycle hook called synchronously before the Vue instance is created.

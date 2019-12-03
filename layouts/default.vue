@@ -30,9 +30,7 @@
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
-        background: #ECE9E6;
-        background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);
-        background: linear-gradient(to left, #FFFFFF, #ECE9E6);
+        background: #fefefe
     }
 
     *,

@@ -20,7 +20,9 @@ export const mutations = {
 export const actions = {
     async fetchCMSPages ({ state, commit }) {
         // If the pages array already contains data, there's no need to make a new call
-        if (state.pages.length) return;
+        if (state.pages.length) {
+            return;
+        };
 
         try {
             // Make request to CMS /pages endpoint to get page data
