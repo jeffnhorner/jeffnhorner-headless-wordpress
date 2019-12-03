@@ -64,7 +64,6 @@
          */
         data: () => ({
             navigation: [],
-            currentPath: '',
         }),
 
         /**
@@ -82,7 +81,7 @@
             },
 
             isHomepage () {
-                return this.$store.getters['modules/navigation/currentPath'] === '/';
+                return this.$route.path === '/';
             },
         },
 
@@ -94,13 +93,6 @@
         created () {
             // Fetch and build the navigation
             this.fetchNavigation();
-
-            // Set the current route path on component creation
-            this.$store.dispatch('modules/navigation/setCurrentPath', this.$route.path);
-        },
-
-        updated () {
-            console.log(this.hasDeterminedPath);
         },
 
         /**
