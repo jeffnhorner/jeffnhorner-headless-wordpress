@@ -1,7 +1,7 @@
 <template>
     <div
         v-bind:class="[
-            { [$style.visibleContainer] : hasExpandedMenu },
+            { [$style.scrollingContainer] : $store.getters['modules/navigation/userIsScrolling'] },
             $style.container,
         ]"
     >
@@ -10,7 +10,7 @@
                 v-bind:navigation="navigation"
             />
         </div>
-        <div v-bind:class="$style.bottomMenu">
+        <!-- <div v-bind:class="$style.bottomMenu">
             <span
                 v-bind:class="$style.logoWrapper"
                 v-on:click="$store.dispatch('modules/navigation/close')"
@@ -41,7 +41,7 @@
         <div
             v-bind:class="{ [$style.body] : hasExpandedMenu }"
             v-on:click="$store.dispatch('modules/navigation/close')"
-        />
+        /> -->
     </div>
 </template>
 
@@ -92,6 +92,8 @@
         created () {
             // Fetch and build the navigation
             this.fetchNavigation();
+            this.isUserScrolling();
+            this.registerEventListener();
         },
 
         /**
@@ -124,36 +126,55 @@
                     });
                 });
             },
+
+            registerEventListener () {
+                window.addEventListener('scroll', this.isUserScrolling);
+            },
+
+            isUserScrolling () {
+                console.log(window.scrollY !== 0);
+                this.$store.dispatch('modules/navigation/setUserIsScrollingBoolean', Boolean(window.scrollY !== 0));
+
+                console.log(this.$store.getters['modules/navigation/userIsScrolling']);
+            }
         },
     };
 </script>
 
 <style lang="scss" module>
     .container {
-        @apply items-center fixed flex flex-col w-full z-20;
-        transition: transform 500ms;
-        transform: translateY(-75%);
+        @apply items-center flex flex-col mx-auto sticky w-full;
+        background-color: transparent;
+        top: 0;
+        transition: .2s ease-in;
+        // transition: transform 500ms;
+        // transform: translateY(-75%);
 
-        @screen lg {
-            transform: translateY(-75%);
-        }
+        // @screen lg {
+        //     transform: translateY(-75%);
+        // }
     }
 
-    .visibleContainer {
-        transform: translateY(0);
+    .scrollingContainer {
+        background-color: #fefefe;
+        transition: .2s ease-in;
     }
+
+    // .visibleContainer {
+    //     transform: translateY(0);
+    // }
 
     .topMenu {
-        @apply flex items-center justify-center text-center w-full z-10;
-        background-color: #fff;
-        height: 10rem;
+        @apply flex items-center justify-end text-center w-full z-10;
+        color: #fff;
+        height: 4rem;
 
-        @screen lg {
-            height: 12rem;
-        }
-        @screen xl {
-            height: 15rem;
-        }
+        // @screen lg {
+        //     height: 12rem;
+        // }
+        // @screen xl {
+        //     height: 15rem;
+        // }
     }
 
     .bottomMenu {

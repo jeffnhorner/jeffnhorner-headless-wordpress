@@ -34,13 +34,13 @@
 <style lang="scss" module>
     .container {
         @apply flex items-center w-full z-10;
-        height: 60vh;
+        height: 55vh;
 
         @screen sm {
-            height: 65vh;
+            height: 62vh;
         }
         @screen lg {
-            height: 75vh;
+            height: 70vh;
         }
     }
 
