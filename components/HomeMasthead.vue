@@ -147,10 +147,10 @@
             transform-origin: 100% 50%;
             -webkit-transition-property: transform;
             transition-property: transform;
-            -webkit-transition-duration: 0.3s;
-            transition-duration: 0.3s;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
+            -webkit-transition-duration: 0.35s;
+            transition-duration: 0.35s;
+            -webkit-transition-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+            transition-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
         }
 
         &:hover:before,

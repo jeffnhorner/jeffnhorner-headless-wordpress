@@ -132,10 +132,7 @@
             },
 
             isUserScrolling () {
-                console.log(window.scrollY !== 0);
                 this.$store.dispatch('modules/navigation/setUserIsScrollingBoolean', Boolean(window.scrollY !== 0));
-
-                console.log(this.$store.getters['modules/navigation/userIsScrolling']);
             }
         },
     };
@@ -146,13 +143,7 @@
         @apply items-center flex flex-col mx-auto sticky w-full;
         background-color: transparent;
         top: 0;
-        transition: .2s ease-in;
-        // transition: transform 500ms;
-        // transform: translateY(-75%);
-
-        // @screen lg {
-        //     transform: translateY(-75%);
-        // }
+        transition: .175s ease-in;
     }
 
     .scrollingContainer {
@@ -160,21 +151,10 @@
         transition: .2s ease-in;
     }
 
-    // .visibleContainer {
-    //     transform: translateY(0);
-    // }
-
     .topMenu {
         @apply flex items-center justify-end text-center w-full z-10;
         color: #fff;
         height: 4rem;
-
-        // @screen lg {
-        //     height: 12rem;
-        // }
-        // @screen xl {
-        //     height: 15rem;
-        // }
     }
 
     .bottomMenu {

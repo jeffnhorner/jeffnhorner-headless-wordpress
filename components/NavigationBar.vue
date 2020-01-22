@@ -88,6 +88,7 @@
             * see https://github.com/css-modules/css-modules/pull/65#issuecomment-188705905
             */
             > :global(.nuxt-link-exact-active) {
+                @apply font-bold;
                 margin-top: .15rem;
             }
         }
